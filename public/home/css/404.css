@@ -1,0 +1,57 @@
+#error-content{
+	font-family:arial;
+	padding: 30px 0;
+}
+
+#error-content  h1, #error-content  h2{
+	font-family:arial
+;
+	font-size: 20px;
+	color: #444;
+}
+
+#error-page-sidebar {
+	float: left;
+}
+
+#error-content ul li {
+list-style: disc;
+margin-left: 20px;
+}
+
+#error-content li {
+line-height: 30px;
+}
+
+#error-content a {
+color: rgb(2, 142, 209);
+}
+
+#error-page-sidebar form {
+margin: 10px 0;
+}
+
+.hcv-google-search {
+max-width: 300px;
+max-height: 100px;
+}
+
+#error-page-content {
+text-align: center;
+}
+
+#error-content input[type="image"] {
+background: rgb(207, 222, 90);
+font-weight: bold;
+border: 1px solid rgb(142, 156, 31);
+border-radius: 5px 30px 30px 5px;
+}
+
+#error-page-sidebar {
+    width: 400px;
+}
+
+.wrap-category-galery .content {
+    display:none;
+}
+
