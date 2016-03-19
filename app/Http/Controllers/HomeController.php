@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-//use Illuminate\Http\Request;
-//use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 use Request;
 use Storage;
 use App\Products;
@@ -12,9 +11,15 @@ use App\Categorys;
 use App\Options;
 use App\ProductOptions;
 use App\Members;
+use App\Orders;
+use App\OrderDetails;
 use DB;
 use Cart;
 use Auth;
+use Socialite;
+use Session;
+use Validator;
+use DateTime;
 class HomeController extends Controller
 {
     /**
@@ -142,16 +147,221 @@ class HomeController extends Controller
 		}
 	}
 	
+	//protected $redirectLogin = 'home';
+	//Session::put('redirectLogin', 'home');
+	
 	public function getOrder()
+	{
+		if (Auth::guard('member')->check())
+		{
+			$topMenu = $this->topMenu;
+			$mainMenu = $this->mainMenu;
+			$dmMenu = $this->dmMenu;
+			$option = $this->option;
+			$countCart = $this->countCart;
+			Session::forget('redirectLogin');
+			$cartContent = Cart::content();
+			return view('home.order', compact('cartContent', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+		
+		} else {
+			//$this->redirectLogin = 'getOrder';
+			Session::put('redirectLogin', 'getOrder');
+			return redirect()->route('getMemberLogin')
+			->with(['flash_message'=>'Đặt hàng ', 'action' => 'order']);
+		}
+		
+	}
+	function refreshAuthMember($id) { 
+		$id = Auth::guard('member')->user()->id; 
+		Auth::guard('member')->logout(); 
+		Auth::guard('member')->loginUsingId($id); 
+	}
+		
+	public function postOrder(OrderRequest $request)
+	{
+		$order = new Orders();
+		$order->member_id = Auth::guard('member')->user()->id;
+		$order->user_id = null;
+		$order->name = Request::input('txtHoten');
+		$order->address = Request::input('txtDiachi');
+		$order->phone = Request::input('txtSdt');
+		$order->email = Request::input('txtEmail');
+		$datetime = new DateTime();
+		$order->date = $datetime->format('Y-m-d H:i:s');
+		$order->note = Request::input('txtGhichu');
+		$order->status = 0;
+		$order->save();
+		
+		//update Members and auth
+		$members = Members::find(Auth::guard('member')->user()->id);
+		if($members->name == '') {
+			$members->name = $order->name;
+			Auth::guard('member')->user()->name = $order->name;
+		}
+		if($members->address == '') {
+			$members->address = $order->address;
+			Auth::guard('member')->user()->address = $order->address;
+		}
+		if($members->phone == 0) {
+			$members->phone = $order->phone;
+			Auth::guard('member')->user()->phone = $order->phone;
+		}
+		if($members->email == '') {
+			$members->email = $order->email;
+			Auth::guard('member')->user()->email = $order->email;
+		}
+		$members->save();
+		
+		//$this->refreshAuthMember($members->id);
+		
+		Auth::guard('member')->setUser($members);
+		//end update Members auth
+		$oid = $order->id;
+		$cart = Cart::content();
+		foreach($cart as $item) {
+			$orderdetail = new OrderDetails();
+			$orderdetail->order_id = $oid;
+			$orderdetail->product_id = $item->id;
+			$orderdetail->qty = $item->qty;
+			$orderdetail->price = $item->price;
+			$orderdetail->save();
+		}
+		Cart::destroy();
+		$thanhtoan = Request::input('thanhtoan');
+		
+		return redirect()->route('getCheckout', $oid)->with(['flash_message' => 'order', 'checkout' =>$thanhtoan]);
+	}
+	
+	public function getMemberLogin()
 	{
 		$topMenu = $this->topMenu;
 		$mainMenu = $this->mainMenu;
 		$dmMenu = $this->dmMenu;
 		$option = $this->option;
 		$countCart = $this->countCart;
-		return view('home.order', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+		return view('home.login', compact( 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+	
 	}
 	
+	public function postMemberLogin(Request $request)
+	{	
+		if(Request::input('check') == 0)  {
+			//register
+			return redirect()->route('getMemberRegister');
+			
+		} else {
+		
+			//login
+			$email = Request::input('txtEmail'); 
+			$password = Request::input('txtPass'); 
+			$mb = array(
+				'email' => $email, 
+				'password' => $password
+			);
+			$authMember = Auth::guard('member')->attempt($mb);
+			//check login
+			if($authMember) {
+				if(Session::has('redirectLogin')) {
+					return redirect()->route(Session::get('redirectLogin'));
+				}
+				return redirect()->route('home');
+				
+			} 
+			else return redirect()->back();
+		}
+	}
+	
+	public function getMemberRegister() {
+		$topMenu = $this->topMenu;
+		$mainMenu = $this->mainMenu;
+		$dmMenu = $this->dmMenu;
+		$option = $this->option;
+		$countCart = $this->countCart;
+		return view('home.register', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+	}
+	
+	public function postMemberRegister(Request $request) {
+		$id = DB::table('members')->insertGetId([
+				// 'name' => $member->name,
+				// 'facebook_id' => $member->id,
+				// 'email' => $member->email,
+				// 'birthday' =>  date( 'Y-m-d', strtotime($member->birthday)), 
+				// 'gender' => $member->gender,
+				// 'status' => 1,
+			]
+		);
+        // Members::find($id)->toArray();
+		return redirect()->back();
+	}
+	
+	public function getMemberLogout()
+	{
+		Auth::guard('member')->logout(); 
+		return redirect()->route('home');
+	}
+	
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+	
+    public function handleProviderCallback()
+    {
+        try {
+            $member  = Socialite::driver('facebook')->user();
+        } catch (Exception $e) {
+            return redirect('/');
+        }
+		$authMember = $this->findOrCreateMember($member);
+		//login
+		Auth::guard('member')->loginUsingId($authMember->id);
+		//redirect
+		if(Session::has('redirectLogin')) {
+			return redirect()->route(Session::get('redirectLogin'));
+		}
+		return redirect()->route('home');
+    }
+
+    private function findOrCreateMember($member)
+    {
+        $authMember = Members::where('facebook_id', $member->id)->first();
+		
+        if ($authMember){
+            return $authMember;
+        }
+		else {
+			if(isset($member->email)){ 
+				$email = $member->email;
+			} else $email = '';
+			
+			if(isset($member->birthday)){ 
+				$birthday = date( 'Y-m-d', strtotime($member->birthday));
+			} else $birthday = '';
+			
+			$id = DB::table('members')->insertGetId([
+					'name' => $member->name,
+					'facebook_id' => $member->id,
+					'email' => $email,
+					'birthday' =>  $birthday, 
+					'gender' => $member->gender,
+					'status' => 1,
+				]
+			);
+			return Members::where('id', $id)->first();
+		}
+    }
+	
+	public function getCheckout($id) {
+		$topMenu = $this->topMenu;
+		$mainMenu = $this->mainMenu;
+		$dmMenu = $this->dmMenu;
+		$option = $this->option;
+		$countCart = $this->countCart;
+		$order = Orders::where('id', $id)->first();
+		$orderdetail = OrderDetails::where('order_id', $id)->get()->toArray();
+		return view('home.checkout', compact('order', 'orderdetail', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+		
+	}
 	
 	
 	

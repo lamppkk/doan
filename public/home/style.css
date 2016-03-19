@@ -430,7 +430,7 @@ html[xmlns] .clearfix {
     padding: 0 20px;
     font-weight: bold;
     font-size: 12px;
-    background: url(images/top-icon-phone.png) 0px  8px no-repeat;
+    background: url(images/top-icon-phone.png) 0px no-repeat;
 }
 #wrap-top-header .box:last-of-type {
     float: right;
@@ -587,7 +587,7 @@ html[xmlns] .clearfix {
 }
 
 .search-box {
-	background: #fff url("http://dacn.dev/templates/home/images/search-icon.png") no-repeat scroll 10px 7px;
+	background: #fff url("images/search-icon.png") no-repeat scroll 10px 7px;
 	padding: 0px 0px 0px 37px;
 	border-radius: 2px;
 	border: 1px solid #ddd;

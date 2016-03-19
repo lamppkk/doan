@@ -1,7 +1,7 @@
 
 .login {
   width: 400px;
-  margin: 20px 20px;
+  margin: 5px;
   font-size: 16px;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .login-container {
-  background: #ebebeb;
-  padding: 12px;
+  background: rgba(235, 235, 235, 0.45);
+  padding: 5px;
 }
 
 /* Every row inside .login-container is defined with p tags */
@@ -41,13 +41,13 @@
   padding: 12px;
 }
 
-.login input[type=email], .login input[type=submit],.login input[type=password] {
+.login input[type=email], textarea, .login input[type=text], .login input[type=submit],.login input[type=password] {
   box-sizing: border-box;
   display: block;
   width: 100%;
   border-width: 1px;
   border-style: solid;
-  padding: 16px;
+  padding: 10px;
   outline: 0;
   font-family: inherit;
   font-size: 0.95em;

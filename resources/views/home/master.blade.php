@@ -33,6 +33,7 @@
 </head>
 <body>
 <div id="wrap-top-header" class="wrap-full regular-font">
+	
 	<div id="view-cart-content" style="display: none;"></div>
 	<div class='opacity pointer'></div>
 	<img id="ajax-load-cart" style="" src="{{ url('public/home/images/ajaxLoader.gif')}}" />
@@ -54,8 +55,14 @@
 		<div class="floatl box">			
 			<div class="menu-top-menu-container">
 				<ul class="menu">	
-					<li><a href="/" title="Đăng nhập">Đăng nhập</a></li>
-					<li><a href="/" title="Đăng ký">Đăng ký</a></li>
+					@if(Auth::guard('member')->check())
+					<li><a href="{!!url('')!!}/member.html" title="">Xin chào, {!! getMember(Auth::guard('member')->user()->id)->name !!}  </a></li>
+					<li><a href="{!!url('')!!}/logout.html" title="">Thoát</a></li>
+										
+					@else
+						<li><a href="{!!url('')!!}/login.html" title="Đăng nhập">Đăng nhập</a></li>
+						<li><a href="{!!url('')!!}/register.html" title="Đăng ký">Đăng ký</a></li>
+					@endif
 				</ul>
 			</div>
 		</div>  
@@ -151,7 +158,7 @@
 <div  class="footer-ad full">
 	<div class="wrap-ad-with-link">
 		<div class="ad-with-link center">
-            <img src="http://comparegithosting.com/_media/ads728.png" />
+            <img src="{{ url('upload/images/ads728.png') }}" />
         </div>
 	</div>
 </div>
@@ -230,6 +237,8 @@
 		</div>
 	</div>
 	<div class="clear"></div>
+	
+	
 </div>
 </body>
 </html>

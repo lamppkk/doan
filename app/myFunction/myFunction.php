@@ -2,6 +2,7 @@
 use App\Categorys;
 use App\Products;
 use App\Options;
+use App\Members;
 function GetCat($parentid , $space = "", $trees = array()) {
 	$data = Categorys::Select('id','name','parent_id')->where('parent_id',$parentid)->get()->toArray();
 	foreach($data as  $row){
@@ -55,4 +56,14 @@ function getProductRelax($cat_id) {
 function getOption($name) {
 	$value = Options::select()->where('name', $name )->get()->first();
 	echo  $value->value;
+}
+
+function getProName($id) {
+	$pro = Products::Select()->where('id',$id)->get()->first();
+	echo $pro->name;
+}
+
+function getMember($id) {
+	$member = Members::where('id',$id)->get()->first();
+	return $member;
 }

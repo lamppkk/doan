@@ -26,19 +26,30 @@
 
 Route::group(['middleware' => 'web'], function () {
 	Route::auth();
-	Route::get('/', 'HomeController@index');
+	Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);
 	Route::get('{alias}_{id}.html',['as'=>'detail','uses'=>'HomeController@detail']);
 	Route::get('category/{alias}_{id}/',['as'=>'category','uses'=>'HomeController@category']);
 	//facebook
-	//Route::get('facebook', 'HomeController@redirectToProvider');
-	//Route::get('facebook/callback', 'HomeController@handleProviderCallback');
+	Route::get('facebook', 'HomeController@redirectToProvider');
+	Route::get('facebook/callback', 'HomeController@handleProviderCallback');
 	//cart
 	Route::get('addToCart/{id}', 'HomeController@addToCart');
 	Route::get('viewCart',['as'=>'viewCart','uses'=>'HomeController@viewCart']);
 	Route::get('deleteCart/{id}',['as'=>'deleteCart','uses'=>'HomeController@deleteCart']);
 	Route::get('updateCart/{id}/{qty}',['as'=>'updateCart','uses'=>'HomeController@updateCart']);
 	Route::get('destroyCart',['as'=>'destroyCart','uses'=>'HomeController@destroyCart']);
-	Route::get('order',['as'=>'order','uses'=>'HomeController@getOrder']);
+	
+	Route::get('order',['as'=>'getOrder','uses'=>'HomeController@getOrder']);
+	Route::post('order',['as'=>'postOrder','uses'=>'HomeController@postOrder']);
+	
+	Route::get('checkout/{id}',['as'=>'getCheckout','uses'=>'HomeController@getCheckout']);
+	
+	
+	Route::get('login.html',['as'=>'getMemberLogin','uses'=>'HomeController@getMemberLogin']);
+	Route::post('login.html',['as'=>'postMemberLogin','uses'=>'HomeController@postMemberLogin']);
+	
+	Route::get('logout.html',['as'=>'getMemberLogout','uses'=>'HomeController@getMemberLogout']);
+	Route::get('register.html',['as'=>'getMemberRegister','uses'=>'HomeController@getMemberRegister']);
 		
 	//admin	
 	Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {

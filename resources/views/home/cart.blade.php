@@ -1,4 +1,11 @@
 ﻿<div class="reset-this">
+	@if(Request::url() == 'http://laravel.dev/order')
+	<script>
+		$("#img-close-cart").click( function() {
+			location.reload();
+		});
+	</script>
+	@endif
 	<img title="Close" id="img-close-cart" class="pointer" src="{{ url('public/home/images/close_cart.png')}}" />
 	<div id="cart-wrap" class="main-width main arial">
 		<header>Giỏ hàng của bạn</header>

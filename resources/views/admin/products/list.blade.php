@@ -1,6 +1,7 @@
 ﻿@extends('admin.master')
 @section('title', 'Quản lý sản phẩm')
 @section('content')
+@section('numpage', 10)
 <div class="row">
     <div class="col-lg-10">
         <div class="page-header">
