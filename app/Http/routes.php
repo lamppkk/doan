@@ -25,6 +25,7 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+
 	Route::auth();
 	Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);
 	Route::get('{alias}_{id}.html',['as'=>'detail','uses'=>'HomeController@detail']);
@@ -50,81 +51,104 @@ Route::group(['middleware' => 'web'], function () {
 	
 	Route::get('logout.html',['as'=>'getMemberLogout','uses'=>'HomeController@getMemberLogout']);
 	Route::get('register.html',['as'=>'getMemberRegister','uses'=>'HomeController@getMemberRegister']);
-		
-	//admin	
+
+	
+	//admin
+	Route::get('admin', function() {
+		return redirect()->route('admin.dashboard.getDashboard');
+
+	});
+
 	Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
-	//admin/news
-	
-	Route::group(['prefix'=>'news'], function () {
-		Route::get('add',['as'=>'admin.news.getAdd','uses'=>'NewsController@getAdd']);
-		Route::post('add',['as'=>'admin.news.postAdd','uses'=>'NewsController@postAdd']);
+		//admin/news
 
-		Route::get('list',['as'=>'admin.news.getList','uses'=>'NewsController@getList']);
-		
-		Route::get('edit/{id}',['as'=>'admin.news.getEdit','uses'=>'NewsController@getEdit']);
-		Route::post('edit/{id}',['as'=>'admin.news.postEdit','uses'=>'NewsController@postEdit']);
+		Route::group(['prefix'=>'news'], function () {
+			Route::get('add',['as'=>'admin.news.getAdd','uses'=>'NewsController@getAdd']);
+			Route::post('add',['as'=>'admin.news.postAdd','uses'=>'NewsController@postAdd']);
 
-		Route::get('delete/{id}',['as'=>'admin.news.getDelete','uses'=>'NewsController@getDelete']);
-		
-		Route::post('postAction',['as'=>'admin.news.postAction','uses'=>'NewsController@postAction']);
+			Route::get('list',['as'=>'admin.news.getList','uses'=>'NewsController@getList']);
 
-	});
-	
-	//admin/categorys
-	Route::group(['prefix'=>'categorys'], function () {
-		Route::get('list',['as'=>'admin.categorys.getList','uses'=>'CategoryController@getList']);
-		Route::post('list',['as'=>'admin.categorys.postList','uses'=>'CategoryController@postList']);
+			Route::get('edit/{id}',['as'=>'admin.news.getEdit','uses'=>'NewsController@getEdit']);
+			Route::post('edit/{id}',['as'=>'admin.news.postEdit','uses'=>'NewsController@postEdit']);
 
-		Route::get('delete/{id}',['as'=>'admin.categorys.getDelete','uses'=>'CategoryController@getDelete']);
-		Route::post('deleteN',['as'=>'admin.categorys.postDeleteN','uses'=>'CategoryController@postDeleteN']);
-		
-		Route::get('edit/{id}',['as'=>'admin.categorys.getEdit','uses'=>'CategoryController@getEdit']);
-		Route::post('edit/{id}',['as'=>'admin.categorys.postEdit','uses'=>'CategoryController@postEdit']);
-		
-		
-	});
-	
-	//admin/product
-	Route::group(['prefix'=>'products'], function () {
-		Route::get('add',['as'=>'admin.products.getAdd','uses'=>'ProductController@getAdd']);
-		Route::post('add',['as'=>'admin.products.postAdd','uses'=>'ProductController@postAdd']);
-	
-		Route::get('list',['as'=>'admin.products.getList','uses'=>'ProductController@getList']);	
-		Route::get('delete/{id}',['as'=>'admin.products.getDelete','uses'=>'ProductController@getDelete']);
-		Route::post('postAction',['as'=>'admin.products.postAction','uses'=>'ProductController@postAction']);
-		
-		Route::get('edit/{id}',['as'=>'admin.products.getEdit','uses'=>'ProductController@getEdit']);
-		Route::post('edit/{id}',['as'=>'admin.products.postEdit','uses'=>'ProductController@postEdit']);
-		
+			Route::get('delete/{id}',['as'=>'admin.news.getDelete','uses'=>'NewsController@getDelete']);
+
+			Route::post('postAction',['as'=>'admin.news.postAction','uses'=>'NewsController@postAction']);
+
+		});
+
+		//admin/categorys
+		Route::group(['prefix'=>'categorys'], function () {
+			Route::get('list',['as'=>'admin.categorys.getList','uses'=>'CategoryController@getList']);
+			Route::post('list',['as'=>'admin.categorys.postList','uses'=>'CategoryController@postList']);
+
+			Route::get('delete/{id}',['as'=>'admin.categorys.getDelete','uses'=>'CategoryController@getDelete']);
+			Route::post('deleteN',['as'=>'admin.categorys.postDeleteN','uses'=>'CategoryController@postDeleteN']);
+
+			Route::get('edit/{id}',['as'=>'admin.categorys.getEdit','uses'=>'CategoryController@getEdit']);
+			Route::post('edit/{id}',['as'=>'admin.categorys.postEdit','uses'=>'CategoryController@postEdit']);
+
+
+		});
+
+		//admin/product
+		Route::group(['prefix'=>'products'], function () {
+			Route::get('add',['as'=>'admin.products.getAdd','uses'=>'ProductController@getAdd']);
+			Route::post('add',['as'=>'admin.products.postAdd','uses'=>'ProductController@postAdd']);
+
+			Route::get('list',['as'=>'admin.products.getList','uses'=>'ProductController@getList']);	
+			Route::get('delete/{id}',['as'=>'admin.products.getDelete','uses'=>'ProductController@getDelete']);
+			Route::post('postAction',['as'=>'admin.products.postAction','uses'=>'ProductController@postAction']);
+
+			Route::get('edit/{id}',['as'=>'admin.products.getEdit','uses'=>'ProductController@getEdit']);
+			Route::post('edit/{id}',['as'=>'admin.products.postEdit','uses'=>'ProductController@postEdit']);
+
 		//Route::get('deleteImage/{id}',['as'=>'admin.products.deleteImage','uses'=>'ProductController@deleteImage']);
-		
-	});
-	
-	Route::group(['prefix'=>'user'], function () {
-		Route::get('list',['as'=>'admin.user.getList','uses'=>'UserController@getList']);	
-		Route::post('list',['as'=>'admin.user.postList','uses'=>'UserController@postList']);
-		
-		Route::get('delete/{id}',['as'=>'admin.user.getDelete','uses'=>'UserController@getDelete']);
-		
-		Route::post('postAction',['as'=>'admin.user.postAction','uses'=>'UserController@postAction']);
-		
-		Route::get('edit/{id}',['as'=>'admin.user.getEdit','uses'=>'UserController@getEdit']);
-		Route::post('edit/{id}',['as'=>'admin.user.postEdit','uses'=>'UserController@postEdit']);
-		
-		
-	});
 
-	Route::get('menu/{id}',['as'=>'admin.menu.getMenu','uses'=>'MenuController@getMenu']);	
-	Route::post('menu/{id}',['as'=>'admin.menu.postMenu','uses'=>'MenuController@postMenu']);	
-	
-	Route::get('dashboard',['as'=>'admin.dashboard.getDashboard','uses'=>'DashboardController@getDashboard']);	
-	//Route::post('menu/{id}',['as'=>'admin.menu.postMenu','uses'=>'MenuController@postMenu']);	
+		});
 
-	
-	// Route::get('login',['as'=>'admin.login.getLogin','uses'=>'Auth\AuthController@getLogin']);	
-	// Route::post('login',['as'=>'admin.login.postLogin','uses'=>'Auth\AuthController@postLogin']);
-	
-	// Route::get('logout',['as'=>'admin.login.getLogout','uses'=>'Auth\AuthController@getLogout']);	
-	
+		Route::group(['prefix'=>'user'], function () {
+			Route::get('list',['as'=>'admin.user.getList','uses'=>'UserController@getList']);	
+			Route::post('list',['as'=>'admin.user.postList','uses'=>'UserController@postList']);
+
+			Route::get('delete/{id}',['as'=>'admin.user.getDelete','uses'=>'UserController@getDelete']);
+
+			Route::post('postAction',['as'=>'admin.user.postAction','uses'=>'UserController@postAction']);
+
+			Route::get('edit/{id}',['as'=>'admin.user.getEdit','uses'=>'UserController@getEdit']);
+			Route::post('edit/{id}',['as'=>'admin.user.postEdit','uses'=>'UserController@postEdit']);
+
+
+		});
+
+		Route::get('menu/{id}',['as'=>'admin.menu.getMenu','uses'=>'SettingController@getMenu']);	
+		Route::post('menu/{id}',['as'=>'admin.menu.postMenu','uses'=>'SettingController@postMenu']);	
+		Route::get('dashboard',['as'=>'admin.dashboard.getDashboard','uses'=>'DashboardController@getDashboard']);	
+
+		Route::get('setting',['as'=>'admin.setting','uses'=>'SettingController@getSetting']);	
+		Route::post('setting',['as'=>'admin.setting','uses'=>'SettingController@postSetting']);	
+
+
+		//admin/order
+		Route::group(['prefix'=>'order'], function () {
+			Route::get('list',['as'=>'admin.order.getList','uses'=>'OrderController@getList']);	
+
+			Route::get('{id}',['as'=>'admin.order.getOrderDetail','uses'=>'OrderController@getOrderDetail']);	
+
+			// Route::get('add',['as'=>'admin.products.getAdd','uses'=>'ProductController@getAdd']);
+			// Route::post('add',['as'=>'admin.products.postAdd','uses'=>'ProductController@postAdd']);
+			// 
+			// Route::get('edit/{id}',['as'=>'admin.products.getEdit','uses'=>'ProductController@getEdit']);
+			// Route::post('edit/{id}',['as'=>'admin.products.postEdit','uses'=>'ProductController@postEdit']);
+
+			// Route::get('delete/{id}',['as'=>'admin.products.getDelete','uses'=>'ProductController@getDelete']);
+			// Route::post('postAction',['as'=>'admin.products.postAction','uses'=>'ProductController@postAction']);
+
+
+
+			//Route::get('deleteImage/{id}',['as'=>'admin.products.deleteImage','uses'=>'ProductController@deleteImage']);
+
+		});	
+
 	});
 });

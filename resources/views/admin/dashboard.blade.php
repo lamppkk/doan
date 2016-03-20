@@ -39,14 +39,14 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">26</div>
+                        <div class="huge">{!!$gopy!!}</div>
                         <div>Góp ý mới!</div>
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="{{url('gopy/list')}}" title="Góp ý">
                 <div class="panel-footer">
-                    <span class="pull-left"><a href="">Xem chi tiết</a></span>
+                    <span class="pull-left">Xem chi tiết</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -61,12 +61,12 @@
                         <i class="fa fa-shopping-cart fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">124</div>
+                        <div class="huge">{!!count($order)!!}</div>
                         <div>Đơn hàng mới!</div>
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="{{url('order')}}" title="Đơn hàng">
                 <div class="panel-footer">
                     <span class="pull-left"><a href="">Xem chi tiết</a></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -83,12 +83,12 @@
                         <i class="fa fa-support fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">1300</div>
+                        <div class="huge">{!!count($product)!!}</div>
                         <div>Sản phẩm</div>
                     </div>
                 </div>
             </div>
-            <a href="#">
+            <a href="{{url('product/list')}}" title='Sản phẩm'>
                 <div class="panel-footer">
                     <span class="pull-left">Xem chi tiết</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -108,7 +108,7 @@
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped">
+                    <table class="table table-bordered table-hover table-striped" >
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -119,21 +119,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                        @if(count($product) <= 0) 
                             <tr>
-                                 <td></td>
+                                <td colspan="5" align="center">Không có sản phẩm mới nào!</td>
+                            </tr>
+                        @endif
+                        @foreach($product as $item) 
+                            <tr>
+                                <td>{!!$item['id']!!}</td>
                                 <td></td>
-                                <td><img src="" width="46" alt="" class="img-circle" /></td>
-                                <td></td>
-                                <td></td>
+                                <td><img src="{!!$item['images']!!}" width="46" alt="{!!$item['name']!!}" class="img-circle" /></td>
+                                <td>{!!number_format($item['price'])!!}</td>
+                                <td>
+                                    @if($item['id'] ==1) Hiển thị
+                                    @else Ẩn
+                                    @endif
+                                </td>
                             </tr>
                            
-                   
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
                  <div class="text-right">
-                    <a href="">Xem tất cả sản phẩm <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('admin/products/list')}}">Xem tất cả sản phẩm <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -156,15 +165,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                        
-                         <tr style="height:60px;">
-                            <td><a href=""></a></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                            </td>
-                            <td></td>
-                       </tr>
+                        @foreach($order as $item) 
+                        <tr style="height:60px;">
+                            <td>{!!$item['id']!!}</td>
+                            <td>{!!$item['name']!!}</td>
+                            <td>{!!date( 'd/m/Y', strtotime($item['date']))!!}</td>
+                            <td>{!!number_format(getTotal($item['id']))!!} VNĐ</td>
+                            <td>{!!$item['status']!!}</td>
+                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

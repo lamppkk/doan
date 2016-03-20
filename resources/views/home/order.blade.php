@@ -44,7 +44,7 @@
 					<tr>
 						<td>Số điện thoại </td>
 						<td>
-							<input  name="txtSdt"  required  onkeyup="valid(this,'numbers')" onblur="valid(this,'numbers')" type="text" value="@if(getMember($id)->phone == 0) {!!getMember($id)->phone!!} @else 0{!!getMember($id)->phone!!} @endif" placeholder="Số điện thoại">
+							<input  name="txtSdt"  required  onkeyup="valid(this,'numbers')" onblur="valid(this,'numbers')" type="text" value="@if(getMember($id)->phone == 0){!!getMember($id)->phone!!}@else 0{!!getMember($id)->phone!!} @endif" placeholder="Số điện thoại">
 						</td>
 					</tr>
 					<tr>

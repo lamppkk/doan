@@ -20,6 +20,7 @@ use Socialite;
 use Session;
 use Validator;
 use DateTime;
+
 class HomeController extends Controller
 {
     /**
@@ -193,7 +194,7 @@ class HomeController extends Controller
 		$order->save();
 		
 		//update Members and auth
-		$members = Members::find(Auth::guard('member')->user()->id);
+		$members = Auth::guard('member')->user();
 		if($members->name == '') {
 			$members->name = $order->name;
 			Auth::guard('member')->user()->name = $order->name;
@@ -214,7 +215,7 @@ class HomeController extends Controller
 		
 		//$this->refreshAuthMember($members->id);
 		
-		Auth::guard('member')->setUser($members);
+		//Auth::guard('member')->setUser($members);
 		//end update Members auth
 		$oid = $order->id;
 		$cart = Cart::content();
@@ -362,7 +363,6 @@ class HomeController extends Controller
 		return view('home.checkout', compact('order', 'orderdetail', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
 		
 	}
-	
 	
 	
 }

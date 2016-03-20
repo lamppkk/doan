@@ -145,8 +145,8 @@
                         </ul>
                     </li>
 					
-					<li>
-                        <a href=""><i class="fa fa-fw fa-shopping-cart"></i> Đơn hàng</a>
+					<li @if(Request::segment(2) == 'order') class="active" @endif>
+                        <a href="{{ url('admin/order/list') }}"><i class="fa fa-fw fa-shopping-cart"></i> Đơn hàng</a>
                     </li>
 					
 					<li>
@@ -159,7 +159,7 @@
 							<li>
 								<a href="">Khuyến mãi</a>
 							</li>
-					
+							
 							<li>
                                 <a href="{{ url('') }}">Giới thiệu công ty</a>
                             </li>
@@ -169,6 +169,9 @@
                             </li>
                             <li>
 								<a href="{{ url('') }}">Hướng dẫn mua hàng</a>
+							</li>
+							<li>
+								<a href="">Tuyển dụng nhận sự</a>
 							</li>
                         </ul>
                     </li>
@@ -190,19 +193,22 @@
 					
 
 					
-					<li>
+					<li @if(Request::segment(2) == 'setting' || Request::segment(2) == 'menu') class="active" @endif>
                         <a href="javascript:;" data-toggle="collapse" data-target="#caidat"><i class="fa fa-fw fa-cog"></i> Cài đặt <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="caidat" class="collapse">
 							
 					
 							<li>
-                                <a href="{{ url('') }}">Cấu hình chung</a>
+                                <a href="{{ url('admin/setting') }}">Cấu hình chung</a>
                             </li>
 							
 							<li>
 								<a href="{{ url('admin/menu/1') }}"> Menu </a>
 							</li>
-							
+							<li>
+                                <a href="{{ url('admin/ads') }}"> Quảng cáo & Slide </a>
+                            </li>
+
 							<li>
                                 <a href="{{ url('') }}">Thanh toán</a>
                             </li>
@@ -280,7 +286,7 @@
                 "bFilter": true,
                 //"bInfo": false,
                 "bAutoWidth": false,
-                "pageLength": @yield('numpage'),
+                "pageLength": @yield('numpage', 5),
 
 
             });

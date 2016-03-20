@@ -3,6 +3,8 @@ use App\Categorys;
 use App\Products;
 use App\Options;
 use App\Members;
+use App\OrderDetails;
+
 function GetCat($parentid , $space = "", $trees = array()) {
 	$data = Categorys::Select('id','name','parent_id')->where('parent_id',$parentid)->get()->toArray();
 	foreach($data as  $row){
@@ -66,4 +68,13 @@ function getProName($id) {
 function getMember($id) {
 	$member = Members::where('id',$id)->get()->first();
 	return $member;
+}
+
+function getTotal($order_id) {
+	$details = OrderDetails::where('order_id',$order_id)->get()->toArray();
+	$tongtien = 0;
+	foreach ($details as $value) {
+		$tongtien+=($value['qty']*$value['price']);	
+	}
+	return $tongtien;
 }

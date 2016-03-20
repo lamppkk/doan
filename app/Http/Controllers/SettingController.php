@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Storage;
-class MenuController extends Controller
+use App\Options;
+class SettingController extends Controller
 {
     public function getMenu($id) {
 		$menu1 = $menu2 = $menu3 = $data = '';
@@ -38,5 +39,29 @@ class MenuController extends Controller
 			return redirect()->route('admin.menu.getMenu', $id)->with(['flash_message'=>'Có lỗi xảy ra', 'flash_level'=>'alert-info alert-dismissable']);
 		} else return redirect()->route('admin.menu.getMenu', $id)->with(['flash_message'=>'Sửa thành công', 'flash_level'=>'alert-info alert-dismissable']);
    
+	}
+
+	public function getSetting()
+	{
+		$data = Options::select()->get()->toArray();
+		return view('admin.setting', compact('data'));
+	}
+
+	public function updateOption($name, $value)
+	{
+		$option = Options::where('name', $name)->update(['value' => $value]);
+	}
+	public function postSetting(Request $request)
+	{
+		$this->updateOption('sitename', $request->txtTen);
+		$this->updateOption('title', $request->txtTitle);
+		$this->updateOption('description', $request->txtMota);
+		$this->updateOption('keyword', $request->txtTukhoa);
+		$this->updateOption('logo', $request->txtLogo);
+		$this->updateOption('favicon', $request->txtFavicon);
+		$this->updateOption('image', $request->txtAnh);
+		if(isset($request->txtTrangthai))
+			$this->updateOption('status', $request->txtTrangthai);
+		return redirect()->route('admin.setting')->with(['flash_message'=>'Sửa thành công', 'flash_level'=>'alert-success alert-dismissable']);
 	}
 }
