@@ -127,11 +127,11 @@
                         @foreach($product as $item) 
                             <tr>
                                 <td>{!!$item['id']!!}</td>
-                                <td></td>
+                                <td>{!!$item['name']!!}</td>
                                 <td><img src="{!!$item['images']!!}" width="46" alt="{!!$item['name']!!}" class="img-circle" /></td>
-                                <td>{!!number_format($item['price'])!!}</td>
+                                <td>{!!number_format($item['price'])!!} VNĐ</td>
                                 <td>
-                                    @if($item['id'] ==1) Hiển thị
+                                    @if($item['status'] ==1 ) Hiển thị
                                     @else Ẩn
                                     @endif
                                 </td>
