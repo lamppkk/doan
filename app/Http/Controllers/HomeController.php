@@ -100,7 +100,9 @@ class HomeController extends Controller
 		else $idcat = $id;
 		//
 		$data = Products::Select()->where('cat_id', $idcat)->orderBy('id','DESC')->paginate(4);
-		return view('home.category', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data', 'idcat'));
+		$sidebar = Products::Select()->get();
+
+		return view('home.category', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data', 'idcat', 'sidebar'));
     }
 	
 	public function addToCart()

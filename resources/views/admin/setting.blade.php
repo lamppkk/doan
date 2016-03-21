@@ -30,25 +30,30 @@
 	</div>
 
 
-	<div class="form-group " style="padding-bottom: 45px">
+	<div class="form-group ">
 		<label style="line-height: 30px;" for="txtTitle" class="col-sm-2 control-label">Tiêu đề trang chủ: <span class="required">*</span></label>
 		<div class="col-sm-10">
 		  <input required  value="{!!old('txtTitle', isset($data) ? getOption('title') : null)!!}" type="text" class="form-control" name="txtTitle" id="txtTitle" placeholder="Nhập tiêu đề" >
 		</div>
 	</div>
+	<div style="padding: 30px;"></div>
 
-
-	<div class="form-group col-sm-6">
-		<label for="txtMota">Mô tả trang chủ  <span class="required">*</span></label>
-		<textarea required class="form-control" name="txtMota" id="txtMota" rows="4" placeholder="Mô tả ngắn về trang web (Khoảng 200 ký tự)">{!!old('txtMota', isset($data) ? getOption('description') : null)!!}</textarea>
+	<div class="form-group ">
+		<label style="line-height: 30px;" class="col-sm-2 control-label" for="txtMota">Mô tả trang chủ  <span class="required">*</span></label>
+		<div class="col-sm-10">
+			<textarea required class="form-control" name="txtMota" id="txtMota" rows="4" placeholder="Mô tả ngắn về trang web (Khoảng 200 ký tự)">{!!old('txtMota', isset($data) ? getOption('description') : null)!!}</textarea>
+		</div>
 	</div>
-	
-	<div class="form-group col-sm-6">
-		<label for="txtTukhoa">Từ khóa trang chủ<span class="required">*</span></label>
-		<textarea required class="form-control" name="txtTukhoa" id="txtTukhoa" rows="4" placeholder="Nhập từ khóa">{!!old('txtTukhoa', isset($data) ? getOption('keyword') : null)!!}</textarea>
+	<div style="padding: 50px;"></div>
+
+	<div class="form-group " style="padding-bottom: 55px">
+		<label style="line-height: 30px;" class="col-sm-2 control-label" for="txtTukhoa">Từ khóa trang chủ<span class="required">*</span></label>
+		<div class="col-sm-10">
+			<textarea required class="form-control" name="txtTukhoa" id="txtTukhoa" rows="4" placeholder="Nhập từ khóa">{!!old('txtTukhoa', isset($data) ? getOption('keyword') : null)!!}</textarea>
+		</div>
 	</div>
 
-	<div style="padding: 35px;"></div>
+	<div style="padding: 20px;"></div>
 
 	<div class="form-group col-sm-4">
 		<label for="logo">Logo: <span class="required">*</span></label>

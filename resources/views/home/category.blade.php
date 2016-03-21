@@ -19,19 +19,29 @@
 	<div class="clear"></div>
 	<div id="middle" class="full">
 		<aside class="arial floatl" id="cat-sidebar">
-			<img class="floatl" src="" width="230" height="230">
-			{{--<h2 class="title">Sản phẩm bán chạy </h2>
-			<ul>
-				<li><a href="">111</a></li>
-			</ul>--}}
 			
+			<h2 class="title">Sản phẩm bán chạy </h2>
+			@foreach ($sidebar as $sb)
+			<div class="box">
+				<div class="floatl wrap-image">
+					<a title="{!!$sb->name!!}" href="http://laravel.dev/giay-vai-luoi-nam-simier_10.html">
+						<img src="{!!$sb->images!!}" alt="{!!$sb->name!!}" width="80">
+					</a>
+				</div>
+				<div class="info">
+					<h4 class="product-name"><a title="{!!$sb->name!!}" href="">{!!$sb->name!!}</a></h4>
+				</div>
+				<div class="clear"></div>
+			</div>
+			@endforeach
+			<img class="floatl" src="" width="230" height="230">
 		</aside>  
 
 		
 		
 		<div class="right floatr">
 			<div class="main-thumbnail floatr">
-				<img class="floatl" src="">
+				<img class="floatl" src="{{url('upload/images/category.jpg')}}">
             </div>
 			<div class="clear"></div>
 			<div id="products" class="home-category">

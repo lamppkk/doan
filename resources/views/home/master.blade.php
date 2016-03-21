@@ -158,7 +158,7 @@
 <div  class="footer-ad full">
 	<div class="wrap-ad-with-link">
 		<div class="ad-with-link center">
-            <img src="{{ url('upload/images/ads728.png') }}" />
+            <a href="#"><img src="{{ url('upload/images/ads728.png') }}" /></a>
         </div>
 	</div>
 </div>
