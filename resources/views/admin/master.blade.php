@@ -170,9 +170,6 @@
                             <li>
 								<a href="{{ url('') }}">Hướng dẫn mua hàng</a>
 							</li>
-							<li>
-								<a href="">Tuyển dụng nhận sự</a>
-							</li>
                         </ul>
                     </li>
 					

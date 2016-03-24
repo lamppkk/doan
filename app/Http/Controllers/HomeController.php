@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Requests\OrderRequest;
+use App\Http\Requests\ContactRequest;
 use Request;
 use Storage;
 use App\Products;
@@ -13,6 +14,7 @@ use App\ProductOptions;
 use App\Members;
 use App\Orders;
 use App\OrderDetails;
+use App\Contacts;
 use DB;
 use Cart;
 use Auth;
@@ -20,6 +22,7 @@ use Socialite;
 use Session;
 use Validator;
 use DateTime;
+use App;
 
 class HomeController extends Controller
 {
@@ -350,10 +353,23 @@ class HomeController extends Controller
 					'status' => 1,
 				]
 			);
+			//fb
+			$this->sentFBNotification($member->id);
 			return Members::where('id', $id)->first();
 		}
     }
-	
+	//sent Facebook Notification
+	public function sentFBNotification($facebook_id){
+			$fb = App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
+			$post = $fb->POST('/'.$facebook_id.'/notifications/',  array(
+			  'access_token' => env('FACEBOOK_APP_ID').'|'.env('FACEBOOK_APP_SECRET'),
+			  'href' => 'http://laravel.dev/',  //this does link to the app's root
+			  'template' => 'Đăng ký tài khoản thành công!',
+			  'ref' => 'Notification sent ',//this is for Facebook's insight
+			));
+		
+	}
+
 	public function getCheckout($id) {
 		$topMenu = $this->topMenu;
 		$mainMenu = $this->mainMenu;
@@ -367,4 +383,48 @@ class HomeController extends Controller
 	}
 	
 	
+
+	public function getGioiThieu() {
+		$topMenu = $this->topMenu;
+		$mainMenu = $this->mainMenu;
+		$dmMenu = $this->dmMenu;
+		$option = $this->option;
+		$countCart = $this->countCart;
+		return view('home.gioithieu', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+		
+	}
+	
+	public function getLienHe() {
+		$topMenu = $this->topMenu;
+		$mainMenu = $this->mainMenu;
+		$dmMenu = $this->dmMenu;
+		$option = $this->option;
+		$countCart = $this->countCart;
+		return view('home.lienhe', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+		
+	}	
+
+	
+	public function postLienHe(Request $request) {
+	
+		$validator = Validator::make(Request::all(), [
+            'captcha' => 'required|captcha'
+        ]);
+
+        if ($validator->fails()) {
+        	return redirect()->back()->with(['flash_message' => 'Sai captcha! Vui lòng nhập lại!'])->withInput();
+        }
+
+        else {
+			$contact = new Contacts();
+			$contact->name = Request::input('txtHoten'); 
+			$contact->email = Request::input('txtEmail'); 
+			$contact->phone = Request::input('txtSdt'); 
+			$contact->content = Request::input('txtNoiDung'); 
+			$contact->save();
+			return redirect()->back()->with(['flash_message' => 'Gửi thành công ! Cảm ơn bạn đã liên hệ với chúng tôi!']);
+		}
+	}
+
+
 }

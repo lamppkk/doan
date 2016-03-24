@@ -158,6 +158,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 		Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 		Laravel\Socialite\SocialiteServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
+        SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
     ],
 
     /*
@@ -205,7 +207,10 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 		'Cart'      => Gloudemans\Shoppingcart\Facades\Cart::class,
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Captcha'   => Mews\Captcha\Facades\Captcha::class,
+        'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
 		
+
     ],
 
 ];
