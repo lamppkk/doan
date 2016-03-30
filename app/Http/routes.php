@@ -26,19 +26,6 @@
 
 Route::group(['middleware' => 'web'], function () {
 
-
-Route::get('fb', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
-			$post = $fb->POST('/574245586067376/notifications/',  array(
-			  'access_token' => env('FACEBOOK_APP_ID').'|'.env('FACEBOOK_APP_SECRET'),
-			  'href' => 'http://laravel.dev/',  //this does link to the app's root, don't think this actually works, seems to link to the app's canvas page
-			  'template' => 'Max 180 characters',
-			  'ref' => 'Notification sent ',//this is for Facebook's insight
-			));
-});
-
-
-
-
 	Route::auth();
 	Route::get('/', ['as'=>'home','uses'=>'HomeController@index']);
 	Route::get('{alias}_{id}.html',['as'=>'detail','uses'=>'HomeController@detail']);
@@ -67,7 +54,7 @@ Route::get('fb', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
 	Route::get('gioi-thieu.html',['as'=>'getGioiThieu','uses'=>'HomeController@getGioiThieu']);
 	Route::get('lien-he.html',['as'=>'getLienHe','uses'=>'HomeController@getLienHe']);
 	Route::post('lien-he.html',['as'=>'postLienHe','uses'=>'HomeController@postLienHe']);
-	
+	Route::get('tin-tuc.html',['as'=>'getTinTuc','uses'=>'HomeController@getTinTuc']);
 
 
 	//admin
@@ -151,6 +138,9 @@ Route::get('fb', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
 			Route::get('list',['as'=>'admin.order.getList','uses'=>'OrderController@getList']);	
 
 			Route::get('{id}',['as'=>'admin.order.getOrderDetail','uses'=>'OrderController@getOrderDetail']);	
+			Route::get('editOrder/{id}/{status}',['as'=>'editOrder','uses'=>'OrderController@editOrder']);
+			Route::get('deleteOrder/{id}',['as'=>'deleteOrder','uses'=>'OrderController@deleteOrder']);
+			//Route::post('edit/{id}',['as'=>'admin.order.postEdit','uses'=>'OrderController@postEdit']);	
 
 			// Route::get('add',['as'=>'admin.products.getAdd','uses'=>'ProductController@getAdd']);
 			// Route::post('add',['as'=>'admin.products.postAdd','uses'=>'ProductController@postAdd']);
@@ -161,11 +151,17 @@ Route::get('fb', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
 			// Route::get('delete/{id}',['as'=>'admin.products.getDelete','uses'=>'ProductController@getDelete']);
 			// Route::post('postAction',['as'=>'admin.products.postAction','uses'=>'ProductController@postAction']);
 
-
-
 			//Route::get('deleteImage/{id}',['as'=>'admin.products.deleteImage','uses'=>'ProductController@deleteImage']);
 
 		});	
+
+		//admin/facebook
+		Route::group(['prefix'=>'facebook'], function () {
+			Route::get('notify',['as'=>'admin.facebook.getNotify','uses'=>'FacebookController@getNotify']);	
+			Route::post('notify',['as'=>'admin.facebook.postNotify','uses'=>'FacebookController@postNotify']);	
+			Route::post('setting',['as'=>'admin.facebook.postSetting','uses'=>'FacebookController@postSetting']);	
+
+		});
 
 	});
 });

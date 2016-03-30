@@ -15,6 +15,7 @@ use App\Members;
 use App\Orders;
 use App\OrderDetails;
 use App\Contacts;
+use App\News;
 use DB;
 use Cart;
 use Auth;
@@ -234,7 +235,10 @@ class HomeController extends Controller
 		}
 		Cart::destroy();
 		$thanhtoan = Request::input('thanhtoan');
-		
+		//fb notification
+		if(isset($members->facebook_id))
+			sentFBNotification($members->facebook_id, '', 'Đặt hàng thành công tại SHOP !');
+
 		return redirect()->route('getCheckout', $oid)->with(['flash_message' => 'order', 'checkout' =>$thanhtoan]);
 	}
 	
@@ -354,21 +358,12 @@ class HomeController extends Controller
 				]
 			);
 			//fb
-			$this->sentFBNotification($member->id);
+			sentFBNotification($member->id, '', 'Đăng ký tài khoản thành công');
 			return Members::where('id', $id)->first();
 		}
     }
 	//sent Facebook Notification
-	public function sentFBNotification($facebook_id){
-			$fb = App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
-			$post = $fb->POST('/'.$facebook_id.'/notifications/',  array(
-			  'access_token' => env('FACEBOOK_APP_ID').'|'.env('FACEBOOK_APP_SECRET'),
-			  'href' => 'http://laravel.dev/',  //this does link to the app's root
-			  'template' => 'Đăng ký tài khoản thành công!',
-			  'ref' => 'Notification sent ',//this is for Facebook's insight
-			));
-		
-	}
+	
 
 	public function getCheckout($id) {
 		$topMenu = $this->topMenu;
@@ -426,5 +421,16 @@ class HomeController extends Controller
 		}
 	}
 
+	public function getTinTuc()
+	{
+		$topMenu = $this->topMenu;
+		$mainMenu = $this->mainMenu;
+		$dmMenu = $this->dmMenu;
+		$option = $this->option;
+		$countCart = $this->countCart;
+		$sidebar = Products::Select()->get();
+		$data = News::Select()->orderBy('id','DESC')->paginate(4);
+		return view('home.tintuc', compact('data', 'sidebar', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
+	}
 
 }

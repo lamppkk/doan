@@ -4,7 +4,6 @@
 @section('image'){!!getOption('image')!!}@stop
 @section('content')
 
-<link rel="stylesheet" type="text/css" href="{{ url('public/home/css/hide-galery.css')}}" />
 <link rel="stylesheet" type="text/css" href="{{ url('public/home/css/home-category.css')}}" />
 <link rel="stylesheet" type="text/css" href="{{ url('public/home/css/category.css')}}" />
 
@@ -30,44 +29,24 @@
 				</div>
 				<div class="info">
 					<h4 class="product-name"><a title="{!!$sb->name!!}" href="">{!!$sb->name!!}</a></h4>
+					<br />
+					<p class="price">Giá: {!!number_format($sb->price)!!} VNĐ</p>
 				</div>
 				<div class="clear"></div>
 			</div>
 			@endforeach
 			<img class="floatl" src="" width="230" height="230">
 		</aside>  
-
-		
 		
 		<div class="right floatr">
-			<div class="main-thumbnail floatr">
+			<!-- <div class="main-thumbnail floatr">
 				<img class="floatl" src="{{url('upload/images/category.jpg')}}">
-            </div>
-			<div class="clear"></div>
+            </div> -->
+			<!-- <div class="clear"></div> -->
 			<div id="products" class="home-category">
-				<span class="wp-pagenavi center">
-				@if (count($data) > 0)
-					@if($data->currentPage() != 1)
-						<a class="prev page-numbers" title="Trang {!!$data->currentPage()-1!!}" href="{!!$data->url($data->currentPage()-1)!!}">« Trước </a>  
-					@endif
-					
-					@for($i = 1; $i <= $data->lastPage(); $i = $i+1)
-						@if($data->currentPage() == $i) 
-							<span class="page-numbers current">{!!$i!!}</span>
-						@else 
-							<a title="Trang {!!$i!!}" class="page-numbers" href="{!!$data->url($i)!!}">{!!$i!!}</a>
-						@endif
-					@endfor
-					
-					@if($data->currentPage() != $data->lastPage())
-						<a class="next page-numbers" title="Trang {!!$data->currentPage()+1!!}" href="{!!$data->url($data->currentPage()+1)!!}">Sau »</a>   
-					@endif
-				@endif
-				</span>
-				
 				<article class="wrap-home-category">
 					<header class="title" style="max-width: 719px;">
-						<h3 class="title bold-font" style="max-width: 719px;">Sản phẩm mới</h3>                    
+						<h3 class="title bold-font" style="max-width: 719px;">{{getCatName($idcat)}} </h3>                    
 					</header>
 					<section class="home-category">
 					@if (count($data) > 0)
@@ -105,6 +84,25 @@
 					</section>
 					<div class="clear"></div>
 				</article>
+				<span class="wp-pagenavi center">
+				@if (count($data) > 0)
+					@if($data->currentPage() != 1)
+						<a class="prev page-numbers" title="Trang {!!$data->currentPage()-1!!}" href="{!!$data->url($data->currentPage()-1)!!}">« Trước </a>  
+					@endif
+					
+					@for($i = 1; $i <= $data->lastPage(); $i = $i+1)
+						@if($data->currentPage() == $i) 
+							<span class="page-numbers current">{!!$i!!}</span>
+						@else 
+							<a title="Trang {!!$i!!}" class="page-numbers" href="{!!$data->url($i)!!}">{!!$i!!}</a>
+						@endif
+					@endfor
+					
+					@if($data->currentPage() != $data->lastPage())
+						<a class="next page-numbers" title="Trang {!!$data->currentPage()+1!!}" href="{!!$data->url($data->currentPage()+1)!!}">Sau »</a>   
+					@endif
+				@endif
+				</span>
 	
 			</div>
 		</div>

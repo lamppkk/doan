@@ -21,4 +21,8 @@ class Orders extends Model
 	];
 
     public $timestamps = true;
+
+    public function member() {
+    	return $this->belongTo('App\Members', 'member_id');
+    } 
 }

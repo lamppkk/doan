@@ -31,7 +31,7 @@ class ProductRequest extends Request
             'txtMota' => 'required',
 			'sltDanhmuc' => 'required',
 			'txtDongia' => 'required',
-			'anhspReq' => 'required',
+			//'anhspReq' => 'required',
 			'txtImage' => 'required',
 			
 			'txtTrangthai' => 'required',
@@ -50,7 +50,7 @@ class ProductRequest extends Request
             'txtMota.required' => 'Vui lòng nhập mô tả',
 			'txtNoiDung.required' => 'Vui lòng nhập nội dung',
 			'txtImage.required' => 'Vui lòng chọn ảnh đại diện',
-			'anhspReq.required' => 'Vui lòng chọn ít nhất một ảnh sản phẩm',
+			//'anhspReq.required' => 'Vui lòng chọn ít nhất một ảnh sản phẩm',
 			
 			'sltDanhmuc.required' => 'Vui lòng chọn danh mục',
             

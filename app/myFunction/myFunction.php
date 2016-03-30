@@ -78,3 +78,13 @@ function getTotal($order_id) {
 	}
 	return $tongtien;
 }
+function sentFBNotification($facebook_id, $link, $msg){
+	$fb = App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
+	$post = $fb->POST('/'.$facebook_id.'/notifications/',  array(
+	  'access_token' => env('FACEBOOK_APP_ID').'|'.env('FACEBOOK_APP_SECRET'),
+	  'href' => $link,  //this does link to the app's root
+	  'template' => $msg,
+	  'ref' => 'Notification sent ',//this is for Facebook's insight
+	));
+	
+}

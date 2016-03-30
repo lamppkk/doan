@@ -7,6 +7,8 @@
     <title>@yield('title') -  {!!getOption('sitename')!!} </title>
 	<meta name="description" content="@yield('description')" />
 	<!-- seo mxh -->
+	<meta property="fb:app_id" content="1131330883545257"/>
+	<meta property="fb:admins"content="100004458189741" />
 	<meta property="og:type" content="website"/>
 	<meta property="og:title" content="@yield('title')" />
 	<meta property="og:site_name" content="{!!getOption('sitename')!!}"/>

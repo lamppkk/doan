@@ -178,7 +178,7 @@
                     </table>
                 </div>
                 <div class="text-right">
-                    <a href="">Xem tất cả đơn đặt hàng <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('admin/order/list')}}">Xem tất cả đơn đặt hàng <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>

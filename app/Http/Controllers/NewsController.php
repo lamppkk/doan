@@ -30,7 +30,7 @@ class NewsController extends Controller
         $news->views        = 0;
         $news->status       = $request->status;
         $news->save();
-        return redirect()->route('admin.news.list')->with(['flash_message'=>'Thêm thành công', 'flash_level'=>'alert-info alert-dismissable']);
+        return redirect()->route('admin.news.getList')->with(['flash_message'=>'Thêm thành công', 'flash_level'=>'alert-info alert-dismissable']);
     }
 	
 	public function getEdit($id)

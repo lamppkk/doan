@@ -115,12 +115,16 @@
 						<label class="col-sm-4 control-label">Email: </label>
 						<label class="col-sm-8 control-label"> {!!$order->email!!}</label>
 					</div>
-					@if($order->note !='')
+
+					<div class="form-group col-sm-12">
+						<label class="col-sm-4 control-label">Ngày đặt: </label>
+						<label class="col-sm-8 control-label"> {!!date( 'd/m/Y h:i:s A', strtotime($order['date']));!!}</label>
+					</div>
 					<div class="form-group col-sm-12">
 						<label class="col-sm-4 control-label">Ghi chú: </label>
-						<label class="col-sm-8 control-label"> {!!$order->note!!}</label>
+						<label class="col-sm-8 control-label"> @if($order->note !='') {!!$order->note!!} @else Không @endif</label>
 					</div>
-					@endif
+					
 				</div>
 
 			</div>
@@ -129,35 +133,4 @@
 </div>
 <!-- /.row -->
 
-<div class="row">
-	<div class="col-sm-12">
-		<div class="panel panel-default">
-			<div class="panel-body">
-			<div class="col-sm-7">
-				<ul class="list-group">
-					<form method="post" action="">
-						<li class="list-group-item">
-							<i class="glyphicon glyphicon-usd"></i> Xác nhận thanh toán đơn hàng 
-							<button name="thanhtoan" class="btn btn-primary" type="button" style="float: right; margin-top: -7px;">Xác nhận</button>
-						</li>
-						<li class="list-group-item"></li>
-						<li class="list-group-item">
-							<i class="fa fa-truck "></i> Xác nhận giao hàng 
-							<button class="btn btn-primary" type="button" style="float: right; margin-top: -7px;">Xác nhận</button>
-						</li>
-						<li class="list-group-item"></li>
-						<li class="list-group-item">
-						<i class="glyphicon glyphicon-ok"></i>
-							Xác nhận hoàn thành giao dịch
-							<button class="btn btn-primary" type="button" style="float: right; margin-top: -7px;">Xác nhận</button>
-						</li>
-					</form>
-				</ul>
-			</div>
-			</div>
-		</div>
-	</div>
-
-	
-</div>
 @endsection()

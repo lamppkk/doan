@@ -43,7 +43,7 @@
     padding-left: 10px;
 }
 #cat-sidebar {
-    line-height: 22px;
+    /*line-height: 22px;*/
     width: 230px;
     border-top: 3px solid #0f62ab;
     top: 0;

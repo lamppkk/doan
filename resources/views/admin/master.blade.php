@@ -10,8 +10,14 @@
 	<script type="text/javascript">
 		//get url website in js
 		var APP_URL = {!! json_encode(url('/')) !!};
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
 	</script>
+    <script src="{{ url('public/admin/js/jquery-ui.min.js')}}"></script>
+    <link href="{{ url('public/admin/css/jquery-ui.min.css')}}" rel="stylesheet">
     <link href="{{ url('public/admin/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url('public/admin/js/bootstrap.min.js')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ url('public/admin/css/sb-admin.css')}}" rel="stylesheet">
     <link href="{{ url('public/admin/css/myCss.css')}}" rel="stylesheet">
@@ -22,6 +28,7 @@
 	<link href="{{ url('public/admin/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
 	<script src="{{ url('public/admin/ckeditor/ckeditor.js')}}"></script>
 	<script src="{{ url('public/admin/ckfinder/ckfinder.js')}}"></script>
+    <link rel="icon" href="{!!getOption('favicon')!!}" type="image/png" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -174,18 +181,26 @@
                     </li>
 					
 					
-					<li>
+					<li @if(Request::segment(2) == 'facebook') class="active" @endif >
                         <a href="javascript:;" data-toggle="collapse" data-target="#fb"><i class="fa fa-fw fa-facebook"></i>Facebook Maketing <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="fb" class="collapse">
-							<li>
-                                <a href="{{ url('') }}"><i class="fa fa-fw fa-plus"></i> Gửi tin nhắn</a>
-                            </li>
 							
 							<li>
-                                <a href="{{ url('') }}"><i class="fa fa-fw fa-plus"></i> Gửi thông báo</a>
+                                <a href="{{ url('admin/facebook/notify') }}"><i class="fa fa-fw fa-plus"></i> Gửi thông báo</a>
                             </li>
                            
-                        </ul>
+                            <li>
+                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-plus"></i> Gửi tin nhắn</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-plus"></i> Cài đặt</a>
+                            </li>
+
+                                
+
+
+                        </ul>   
                     </li>
 					
 
@@ -247,7 +262,7 @@
         </nav>
 
         <div id="page-wrapper">
-           
+           <div class"msg"></div>
             @if (Session::has('flash_message'))
                 <div class="col-lg-12">
                     <div class="alert {!! Session::get('flash_level') !!} " style="    margin-bottom: 0px;">
