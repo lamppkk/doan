@@ -41,7 +41,7 @@
 	</div>
 	
 	<div class="form-group col-sm-12">
-	<label for="txtNoiDung">Nội dung <span class="required">*</span></label>
+	<label for="txtNoiDung">Nội dung <span class="required">*</span></label><br />
 	  <textarea required  class="form-control" name="txtNoiDung" id="txtNoiDung" style="width: 400px;" placeholder="">
 		{!! old('txtNoiDung') !!}
 	  </textarea>
