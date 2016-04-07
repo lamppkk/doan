@@ -20,8 +20,8 @@ class CreateMemberTable extends Migration
 			$table->string('facebook_id')->unique();
             $table->integer('phone')->unique();
             $table->integer('address');
-            $table->integer('birthdate');
-            $table->integer('sex');
+            $table->date('birthday');
+            $table->string('gender');
             $table->integer('status');
             $table->rememberToken();
             $table->timestamps();

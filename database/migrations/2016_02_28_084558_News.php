@@ -18,8 +18,8 @@ class News extends Migration
             $table->integer('user_id');
             $table->string('title')->unique();
             $table->string('alias');
-            $table->string('description');
-            $table->string('content');
+            $table->text('description');
+            $table->text('content');
             $table->string('images');
             $table->integer('views');
             $table->integer('status');

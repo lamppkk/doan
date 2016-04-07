@@ -62,16 +62,14 @@
 								</p>
 								<div class="info">
 									<p class="first-info">
-										<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['title']!!}" class="regular-font product-title">{!!$dt['title']!!}</a>
+										<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['title']!!}" class="regular-font product-title" style="padding: 0px 8px;">{!!$dt['title']!!}</a>
 										<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" class="click-link"></a>
-										<div class="center">
-											<span class="price bold-font"></span>
-										</div>
+										<br />
 									</p>
 									<div class="regular-font more-info">
 									<div>
 										<p  class="description" >
-											{!! mb_substr($dt['description'], 0,70, "utf-8") !!}, ...
+											{!! mb_substr($dt['description'], 0,100, "utf-8") !!}, ...
 										</p>
 									</div>	
 										

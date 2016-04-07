@@ -429,7 +429,7 @@ class HomeController extends Controller
 		$option = $this->option;
 		$countCart = $this->countCart;
 		$sidebar = Products::Select()->get();
-		$data = News::Select()->orderBy('id','DESC')->paginate(4);
+		$data = News::Select()->orderBy('id','DESC')->paginate(8);
 		return view('home.tintuc', compact('data', 'sidebar', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
 	}
 

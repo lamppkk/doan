@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Members;
 use App\FBLogs;
+use App\Options;
 use DB;
 use Auth;
 class FacebookController extends Controller
