@@ -51,10 +51,15 @@ Route::group(['middleware' => 'web'], function () {
 	
 	Route::get('logout.html',['as'=>'getMemberLogout','uses'=>'HomeController@getMemberLogout']);
 	Route::get('register.html',['as'=>'getMemberRegister','uses'=>'HomeController@getMemberRegister']);
+	Route::get('member.html',['as'=>'getMember','uses'=>'HomeController@getMember']);
+
+
 	Route::get('gioi-thieu.html',['as'=>'getGioiThieu','uses'=>'HomeController@getGioiThieu']);
 	Route::get('lien-he.html',['as'=>'getLienHe','uses'=>'HomeController@getLienHe']);
 	Route::post('lien-he.html',['as'=>'postLienHe','uses'=>'HomeController@postLienHe']);
 	Route::get('tin-tuc.html',['as'=>'getTinTuc','uses'=>'HomeController@getTinTuc']);
+	Route::get('khuyen-mai.html',['as'=>'getKhuyenMai','uses'=>'HomeController@getKhuyenMai']);
+	Route::get('tin-tuc/{alias}_{id}.html',['as'=>'getTinTucDetail','uses'=>'HomeController@getTinTucDetail']);
 
 
 	//admin

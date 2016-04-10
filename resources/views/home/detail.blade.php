@@ -66,8 +66,12 @@
 				</ul>
                 <div class="col11 floatl" style="margin-top: 10px;">
                     <p class="price">
-						Giá bán : <span>500.000 VNĐ</span>
+						Giá bán : <span>{!! number_format($product->price) !!} VNĐ</span> 
+						@if(isset($product->price_sale))
+						<s style="font-size: 13px;color: rgba(43, 43, 43, 0.72);  font-weight: bold;">{!! number_format($product->price_sale) !!} VNĐ</s>
+						@endif
 					</p>
+
 					
                 </div>
 				

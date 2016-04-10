@@ -23,7 +23,7 @@
 			@foreach ($sidebar as $sb)
 			<div class="box">
 				<div class="floatl wrap-image">
-					<a title="{!!$sb->name!!}" href="http://laravel.dev/giay-vai-luoi-nam-simier_10.html">
+					<a title="{!!$sb->name!!}" href="{{url('/')}}/{!!$sb['alias']!!}_{!!$sb['id']!!}.html">
 						<img src="{!!$sb->images!!}" alt="{!!$sb->name!!}" width="80">
 					</a>
 				</div>
@@ -56,20 +56,20 @@
 							
 							<div class="box floatl">
 								<p class="center">
-									<a href="{{url('/')}}/news/{!!$dt['alias']!!}_{!!$dt['id']!!}.html">
+									<a href="{{url('/')}}/tin-tuc/{!!$dt['alias']!!}_{!!$dt['id']!!}.html">
 									<img src="{!!$dt['images']!!}" alt="" width="190" height="150" />
 									</a>
 								</p>
 								<div class="info">
 									<p class="first-info">
-										<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['title']!!}" class="regular-font product-title" style="padding: 0px 8px;">{!!$dt['title']!!}</a>
-										<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" class="click-link"></a>
+										<a href="{{url('/')}}/tin-tuc/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['title']!!}" class="regular-font product-title" style="padding: 0px 8px;">{!!$dt['title']!!}</a>
+										<a href="{{url('/')}}/tin-tuc/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" class="click-link"></a>
 										<br />
 									</p>
 									<div class="regular-font more-info">
 									<div>
 										<p  class="description" >
-											{!! mb_substr($dt['description'], 0,100, "utf-8") !!}, ...
+											{!! mb_substr($dt['description'], 0,120, "utf-8") !!}, ...
 										</p>
 									</div>	
 										
@@ -79,7 +79,7 @@
 							</div>  
 						@endforeach
 					@else 
-						<div style="margin: 10px; text-align: center;">Không có sản phẩm nào </div>
+						<div style="margin: 10px; text-align: center;">Không có bài viết nào! </div>
 					@endif
 					</section>
 					<div class="clear"></div>

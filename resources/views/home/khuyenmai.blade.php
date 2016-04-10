@@ -1,6 +1,6 @@
 @extends('home.master')
-@section('title'){!!getCatName($idcat)!!}@stop
-@section('description'){!!getCatVal($idcat, 'description')!!}@stop
+@section('title')Thông tin khuyến mại @stop
+@section('description')Thông tin khuyến mại - {!!getOption('sitename')!!}@stop
 @section('image'){!!getOption('image')!!}@stop
 @section('content')
 
@@ -12,7 +12,7 @@
 	<div id="wrap-breadcrumb" class="full regular-font uppercase">
 		<div id="breadcrumb">
 			<a title="Trang chủ" href="{{ url('') }}">Trang chủ</a> / 
-			<h1>{{getCatName($idcat)}}</h1>
+			<h1>Khuyến mại</h1>
 		</div>	
 	</div>
 	<div class="clear"></div>
@@ -46,7 +46,7 @@
 			<div id="products" class="home-category">
 				<article class="wrap-home-category">
 					<header class="title" style="max-width: 719px;">
-						<h3 class="title bold-font" style="max-width: 719px;">{{getCatName($idcat)}} </h3>                    
+						<h3 class="title bold-font" style="max-width: 719px;">Khuyến mại </h3>                    
 					</header>
 					<section class="home-category">
 					@if (count($data) > 0)
@@ -58,7 +58,7 @@
 									<img src="{!!$dt['images']!!}" alt="" width="190" height="150" />
 									</a>
 								</p>
-								<div class="info">
+								<div class="info center">
 									<p class="first-info">
 										<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['name']!!}" class="regular-font product-title">{!!$dt['name']!!}</a>
 										<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" class="click-link"></a>
@@ -67,11 +67,12 @@
 										</div>
 									</p>
 									<div class="regular-font more-info">
-									<div>
-										<p  class="description" >
-											{!!  getOP($dt['id']) !!}
-										</p>
-									</div>	
+										<div>
+											@if(isset($dt['price_sale']))<p class="sale"><s>{!!number_format($dt['price_sale'])!!} VNĐ</s></p> @endif
+											<p  class="description" >
+												{!!  getOP($dt['id']) !!}
+											</p>
+										</div>	
 										<span pid="{!!$dt['id']!!}"  class="vmz-add-to-cart pointer"></span>                                
 									</div>
 								</div>

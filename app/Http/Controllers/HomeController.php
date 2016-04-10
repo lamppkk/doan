@@ -304,6 +304,16 @@ class HomeController extends Controller
 		return redirect()->back();
 	}
 	
+	public function getMember()
+	{ 
+		if (Auth::guard('member')->check()) {
+			echo 'ok';
+		} else {
+			echo 'else';
+		}
+	}
+
+
 	public function getMemberLogout()
 	{
 		Auth::guard('member')->logout(); 
@@ -433,4 +443,36 @@ class HomeController extends Controller
 		return view('home.tintuc', compact('data', 'sidebar', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
 	}
 
+	public function getTinTucDetail($alias, $id='')
+    {
+		$topMenu = $this->topMenu;
+		$mainMenu = $this->mainMenu;
+		$dmMenu = $this->dmMenu;
+		$option = $this->option;
+		$countCart = $this->countCart;
+		//
+		$n = DB::table('news')->select('id')->where('alias', $alias)->first();
+		if(isset($n)) $ids = $n->id;
+		else $ids = $id;
+		//
+		$sidebar = Products::Select()->get();
+		$new  = DB::table('news')->where('id', $ids)->first();
+		//get images
+		return view('home.newdetail', compact('countCart', 'option', 'new', 'sidebar', 'topMenu', 'mainMenu', 'dmMenu'));
+    }
+
+
+	public function getKhuyenMai()
+	{
+		$topMenu = $this->topMenu;
+		$mainMenu = $this->mainMenu;
+		$dmMenu = $this->dmMenu;
+		$option = $this->option;
+		$countCart = $this->countCart;
+		//khuyen mai if exit price khuyen mai
+		$data = Products::Select()->whereNotNull('price_sale')->orderBy('id','DESC')->paginate(8);
+		$sidebar = Products::Select()->get();
+
+		return view('home.khuyenmai', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data', 'sidebar'));
+    }
 }

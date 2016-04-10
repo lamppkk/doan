@@ -85,12 +85,13 @@
 								<span class="price bold-font">{!!number_format($dt['price'])!!} VNĐ</span>
 							</div>
 						</p>
-						<div class="regular-font more-info">
-						<div>
-							<p  class="description" >
-								{!!  getOP($dt['id']) !!}
-							</p>
-						</div>	
+						<div class="regular-font more-info center">
+							<div>
+								@if(isset($dt['price_sale']))<p class="sale"><s>{!!number_format($dt['price_sale'])!!} VNĐ</s></p> @endif
+								<p  class="description" >
+									{!!  getOP($dt['id']) !!}
+								</p>
+							</div>	
 							<span pid="{!!$dt['id']!!}" class="vmz-add-to-cart pointer"></span>                                
 						</div>
 					</div>
