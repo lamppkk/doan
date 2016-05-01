@@ -35,7 +35,8 @@
 				<div class="clear"></div>
 			</div>
 			@endforeach
-			<img class="floatl" src="" width="230" height="230">
+			<br />
+			<a href="{{ getOption('ads-link3') }}" width="230" height="230" title="Quảng cáo"><img src="{{ getOption('ads-image3') }}" /></a>
 		</aside>  
 
 		

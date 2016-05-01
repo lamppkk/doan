@@ -22,33 +22,33 @@
     margin: 15px 0px 0px 247px;
     overflow: hidden;">
   <ul class="slides">
-		<li>
-			<img src="/images/1.jpg" />
-		</li>
-		<li>
-			<img src="/images/2.jpg" />
-		</li>
-		<li>
-			<img src="/images/3.jpg" />
-		</li>
+        <li>
+            <img src="{{ getOption('ads-image11') }}" title="{{ getOption('title') }}" />
+        </li>
+        <li>
+            <img src="{{ getOption('ads-image12') }}" title="{{ getOption('title') }}" />
+        </li>
+        <li>
+            <img src="{{ getOption('ads-image13') }}" title="{{ getOption('title') }}" />
+        </li>
   </ul>
 </div>
            
 <div id="banner-home" class="floatr">
-	<div class="wrap-ad-with-link">
-		<div class="ad-with-link">
-			<a href="">
-				<img src="/images/2.jpg" />
-			</a>
-		</div>
-	</div>
-	<div class="wrap-ad-with-link">
-		<div class="ad-with-link">
-			<a href="">
-				<img src="/images/1.jpg" />
-			</a>
-		</div>
-	</div>
+    <div class="wrap-ad-with-link">
+        <div class="ad-with-link">
+            <a href="">
+                <img src="/images/2.jpg" />
+            </a>
+        </div>
+    </div>
+    <div class="wrap-ad-with-link">
+        <div class="ad-with-link">
+            <a href="">
+                <img src="/images/1.jpg" />
+            </a>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -63,46 +63,91 @@
 <div class="clear"></div>
 <div class="full" id="home-category">
     <article class="wrap-home-category">
-		<header class="title">
+        <header class="title">
             <h3 class="title bold-font">Sản phẩm mới</h3>                    
-			<a href="" class="regular-font view-all">Xem thêm »</a>
+            <a href="" class="regular-font view-all">Xem thêm »</a>
         </header>
         <section class="home-category">
-		@if (count($data) > 0)
-			@foreach ($data as $dt)
-				
-				<div class="box floatl">
-					<p class="center">
-						<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html">
-						<img src="{!!$dt['images']!!}" alt="" width="190" height="150" />
-						</a>
-					</p>
-					<div class="info">
-						<p class="first-info">
-							<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['name']!!}" class="regular-font product-title">{!!$dt['name']!!}</a>
-							<a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" class="click-link"></a>
-							<div class="center">
-								<span class="price bold-font">{!!number_format($dt['price'])!!} VNĐ</span>
-							</div>
-						</p>
-						<div class="regular-font more-info center">
-							<div>
-								@if(isset($dt['price_sale']))<p class="sale"><s>{!!number_format($dt['price_sale'])!!} VNĐ</s></p> @endif
-								<p  class="description" >
-									{!!  getOP($dt['id']) !!}
-								</p>
-							</div>	
-							<span pid="{!!$dt['id']!!}" class="vmz-add-to-cart pointer"></span>                                
-						</div>
-					</div>
-		
-				</div>  
-			@endforeach
-		@else 
-			<div style="margin: 10px; text-align: center;">Không có sản phẩm nào </div>
-		@endif
-		</section>
+        @if (count($data) > 0)
+            @foreach ($data as $dt)
+                
+                <div class="box floatl">
+                    <p class="center">
+                        <a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html">
+                        <img src="{!!$dt['images']!!}" alt="" width="190" height="150" />
+                        </a>
+                    </p>
+                    <div class="info center">
+                        <p class="first-info">
+                            <a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['name']!!}" class="regular-font product-title">{!!$dt['name']!!}</a>
+                            <a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" class="click-link"></a>
+                            <div class="center">
+                                <span class="price bold-font">{!!number_format($dt['price'])!!} VNĐ</span>
+                            </div>
+                        </p>
+                        <div class="regular-font more-info center">
+                            <div>
+                                @if(isset($dt['price_sale']))<p class="sale"><s>{!!number_format($dt['price_sale'])!!} VNĐ</s></p> @endif
+                                <p  class="description" >
+                                    {!!  getOP($dt['id']) !!}
+                                </p>
+                            </div>  
+                            <span pid="{!!$dt['id']!!}" class="vmz-add-to-cart pointer"></span>                                
+                        </div>
+                    </div>
+        
+                </div>  
+            @endforeach
+        @else 
+            <div style="margin: 10px; text-align: center;">Không có sản phẩm nào </div>
+        @endif
+        </section>
         <div class="clear"></div>
-	</article>
+    </article>
+
+
+    <article class="wrap-home-category">
+        <header class="title">
+            <h3 class="title bold-font">Giầy nam cao cấp</h3>                    
+            <a href="" class="regular-font view-all">Xem thêm »</a>
+        </header>
+        <section class="home-category">
+        @if (count($cat8) > 0)
+            @foreach ($cat8 as $dt)
+                
+                <div class="box floatl">
+                    <p class="center">
+                        <a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html">
+                        <img src="{!!$dt['images']!!}" alt="" width="190" height="150" />
+                        </a>
+                    </p>
+                    <div class="info center">
+                        <p class="first-info">
+                            <a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" title="{!!$dt['name']!!}" class="regular-font product-title">{!!$dt['name']!!}</a>
+                            <a href="{{url('/')}}/{!!$dt['alias']!!}_{!!$dt['id']!!}.html" class="click-link"></a>
+                            <div class="center">
+                                <span class="price bold-font">{!!number_format($dt['price'])!!} VNĐ</span>
+                            </div>
+                        </p>
+                        <div class="regular-font more-info center">
+                            <div>
+                                @if(isset($dt['price_sale']))<p class="sale"><s>{!!number_format($dt['price_sale'])!!} VNĐ</s></p> @endif
+                                <p  class="description" >
+                                    {!!  getOP($dt['id']) !!}
+                                </p>
+                            </div>  
+                            <span pid="{!!$dt['id']!!}" class="vmz-add-to-cart pointer"></span>                                
+                        </div>
+                    </div>
+        
+                </div>  
+            @endforeach
+        @else 
+            <div style="margin: 10px; text-align: center;">Không có sản phẩm nào </div>
+        @endif
+        </section>
+        <div class="clear"></div>
+    </article>
+
 </div>
 @endsection

@@ -69,7 +69,8 @@ class HomeController extends Controller
 		$countCart = $this->countCart;
 		//
 		$data = Products::Select()->orderBy('id','DESC')->get()->toArray();
-		return view('home.home', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data'));
+		$cat8 = Products::where('cat_id', 8)->orderBy('id','DESC')->get()->take(5)->toArray();
+		return view('home.home', compact('cat8', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data'));
     }
 	
 	public function detail($alias, $id='')
@@ -80,7 +81,7 @@ class HomeController extends Controller
 		$option = $this->option;
 		$countCart = $this->countCart;
 		//
-		$product  = DB::table('products')->where('id', $id)->where('alias', $alias)->first();
+		$product  = DB::table('products')->where('id', $id)->orWhere('alias', $alias)->first();
 		//get images
 		$pimage = Products::find($id)->pimages->toArray(); 
 		$pimages = array();
@@ -103,8 +104,8 @@ class HomeController extends Controller
 		if(isset($cate)) $idcat = $cate->id;
 		else $idcat = $id;
 		//
-		$data = Products::Select()->where('cat_id', $idcat)->orderBy('id','DESC')->paginate(4);
-		$sidebar = Products::Select()->get();
+		$data = Products::Select()->where('cat_id', $idcat)->orderBy('id','DESC')->paginate(8);
+		$sidebar = Products::Select()->where('cat_id', $idcat)->get()->take(5);
 
 		return view('home.category', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data', 'idcat', 'sidebar'));
     }
@@ -438,7 +439,7 @@ class HomeController extends Controller
 		$dmMenu = $this->dmMenu;
 		$option = $this->option;
 		$countCart = $this->countCart;
-		$sidebar = Products::Select()->get();
+		$sidebar = Products::Select()->take(5)->get();
 		$data = News::Select()->orderBy('id','DESC')->paginate(8);
 		return view('home.tintuc', compact('data', 'sidebar', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu'));
 	}
@@ -471,8 +472,29 @@ class HomeController extends Controller
 		$countCart = $this->countCart;
 		//khuyen mai if exit price khuyen mai
 		$data = Products::Select()->whereNotNull('price_sale')->orderBy('id','DESC')->paginate(8);
-		$sidebar = Products::Select()->get();
+		$sidebar = Products::Select()->take(5)->get();
 
 		return view('home.khuyenmai', compact('countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data', 'sidebar'));
     }
+
+
+    public function getTimKiem($cat_id, $key = '')
+    {
+    	try {
+    		//$products = Products::SearchByKeyword($cat_id, $key)->get();
+	    	$topMenu = $this->topMenu;
+			$mainMenu = $this->mainMenu;
+			$dmMenu = $this->dmMenu;
+			$option = $this->option;
+			$countCart = $this->countCart;
+			//
+			$data = Products::SearchByKeyword($cat_id, $key)->paginate(8);
+			$sidebar = Products::Select()->get()->take(5);
+	    	return view('home.search', compact('key', 'countCart', 'option', 'topMenu', 'mainMenu', 'dmMenu', 'data', 'cat_id', 'sidebar'));
+    	} catch (Exception $ex) {
+    		return redirect('/');
+    	}
+    	
+    }
+    
 }

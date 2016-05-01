@@ -113,9 +113,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tên sản phẩm</th>
-                                <th>Hình ảnh</th>
+                                <th width="100">Hình ảnh</th>
                                 <th>Đơn giá</th>
-                                <th>Trang thái</th>
+                                <th width="100">Trang thái</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -171,7 +171,18 @@
                             <td>{!!$item['name']!!}</td>
                             <td>{!!date( 'd/m/Y', strtotime($item['date']))!!}</td>
                             <td>{!!number_format(getTotal($item['id']))!!} VNĐ</td>
-                            <td>{!!$item['status']!!}</td>
+                            <td>
+                                @if ($item['status'] == 0)
+                                    <i class="glyphicon glyphicon-plus"></i> Mới đặt hàng
+                                @elseif ($item['status'] == 1)
+                                    <i class="glyphicon glyphicon-usd"></i> Đã thanh toán
+                                @elseif($item['status'] == 2)
+                                    <i class="glyphicon glyphicon-plane"></i> Đang chuyển hàng
+                                @else
+                                    <i class="glyphicon glyphicon-ok"></i> Hoàn thành
+                                @endif
+
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>

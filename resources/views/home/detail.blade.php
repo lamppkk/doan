@@ -150,7 +150,7 @@
     <div class="col1 floatl">
         <ul class="nav">
             <li class="tab active"  id="detail-info">Thông tin sản phẩm</li>
-            <li  class="tab" id="review">Nhận xét</li>
+            <li  class="tab" id="review">Nhận xét & Đánh giá</li>
             <div class="clear"></div>
         </ul>
         
@@ -191,7 +191,12 @@
 				</div>
 			@endforeach
         </div>
+        <br />
+		<a href="{{ getOption('ads-link2') }}" width="200" height="200" title="Quảng cáo"><img src="{{ getOption('ads-image2') }}" /></a>
+
     </aside>
 </div>
+</div>
 <div class="clear"></div>
+
 @endsection

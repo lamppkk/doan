@@ -5,22 +5,26 @@ valid.r={
 	'numbers':/[^\d]/g
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
 	
     var href = "/viewCart/";
 	
     //Fixed on scroll
-    if($("#cat-sidebar, #relative").size()!=0)
+    if($("#relative").size()!=0)
     {
-        var y = $("#cat-sidebar, #relative").offset().top;
+        var y = $("#relative").offset().top;
         $(window).scroll(function(){
             var x = y - $(window).scrollTop();
-            if( x<0 ) {$("#cat-sidebar, #relative").addClass("fixed")}
-            else $("#cat-sidebar, #relative").removeClass("fixed");
+            if( x<0 ) {$("#relative").addClass("fixed")}
+            else $("#relative").removeClass("fixed");
+            if( $(window).scrollTop() + $(window).height() >= 2070) {
+                $("#relative").removeClass("fixed");
+            }
         });
     }
     
-    
+
+
     
     //Slider product detail
     var left = 0;
@@ -90,12 +94,12 @@ $(document).ready(function(){
         $(".opacity").css("display","block");
         $("#ajax-load-cart").css("display","block");  
         var pid = $(this).attr("pid");
-		console.log();
+		//console.log(pid);
 		$.ajax({
 			url: APP_URL + "/addToCart/" + pid,
 			type: "GET",
 			cache: false,
-			data: {"pid": pid}, 
+			data: { "pid": pid }, 
 			success: function(data){ 
 				$("#cart-total").html(data);
 				$.get(
@@ -259,5 +263,34 @@ $(document).ready(function(){
 		});
 	
     });
+
+
+    $('#search').keyup(function(e) {
+    	$(".flexslider").css("display","none");
+    	$("#banner-home").css("display","none");
+    	$("#ajax-load-cart").css("display","block");
+    	$(".opacity").css("display","block");
+    	var cat = $("#category").val();
+    	var key = $("#search").val();
+    	$.get(APP_URL + "/search/"+cat+"/"+key, function(data){
+    		$('#main-content').html(data);
+    		setTimeout(function() {
+    			$("#ajax-load-cart").css("display","none");
+    		 	$(".opacity").css("display","none");
+    		}, 400);
+    		
+    	});
+
+    });
+
+    $('#search').on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) { 
+            e.preventDefault();
+            return false;
+        }
+    });
     
+
+
 });

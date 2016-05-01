@@ -182,7 +182,7 @@
 					
 					
 					<li @if(Request::segment(2) == 'facebook') class="active" @endif >
-                        <a href="javascript:;" data-toggle="collapse" data-target="#fb"><i class="fa fa-fw fa-facebook"></i>Facebook Maketing <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#fb"><i class="fa fa-fw fa-facebook"></i>Facebook <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="fb" class="collapse">
 							
 							<li>
@@ -190,11 +190,15 @@
                             </li>
                            
                             <li>
-                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-plus"></i> Gửi tin nhắn</a>
+                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-envelope"></i> Gửi tin nhắn</a>
+                            </li>
+                            
+                            <li>
+                                <a href="{{ url('admin/facebook/livechat') }}"><i class="fa fa-fw fa-commenting-o"></i> Live Chat</a>
                             </li>
 
                             <li>
-                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-plus"></i> Cài đặt</a>
+                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-cog"></i> Cài đặt</a>
                             </li>
 
                                 
@@ -205,7 +209,7 @@
 					
 
 					
-					<li @if(Request::segment(2) == 'setting' || Request::segment(2) == 'menu') class="active" @endif>
+					<li @if(Request::segment(2) == 'setting' || Request::segment(2) == 'ads' || Request::segment(2) == 'menu') class="active" @endif>
                         <a href="javascript:;" data-toggle="collapse" data-target="#caidat"><i class="fa fa-fw fa-cog"></i> Cài đặt <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="caidat" class="collapse">
 							
@@ -215,10 +219,10 @@
                             </li>
 							
 							<li>
-								<a href="{{ url('admin/menu/1') }}"> Menu </a>
+								<a href="{{ url('admin/menu/1') }}"> Menu & Hiển thị</a>
 							</li>
 							<li>
-                                <a href="{{ url('admin/ads') }}"> Quảng cáo & Slide </a>
+                                <a href="{{ url('admin/ads/1') }}"> Quảng cáo & Slide </a>
                             </li>
 
 							<li>
@@ -282,7 +286,6 @@
 
     </div>
     <!-- /#wrapper -->
-
 
     <script src="{{ url('public/admin/js/myFunction.js')}}"></script>
 	<script src="{{ url('public/admin/js/jquery.dataTables.min.js')}}"></script>

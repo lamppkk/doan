@@ -131,7 +131,7 @@ position: relative;
     height: 27px;
     position: relative;
 }
-.filter form input[type="submit"] {
+.filter form input[type="submit"],  .filter form input[type="button"]{
     border: none;
     position: relative;
     background: url(../images/search_icon_1.png) no-repeat center #FFFFFF;
