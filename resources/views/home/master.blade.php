@@ -46,14 +46,14 @@
                 {!!getMenu($topMenu, 'menu', 'menu-top-menu')!!}
             </div>
         </div>
-        <div class="floatl box">
+        {{-- <div class="floatl box">
             <div class="textwidget">
                 <ul class="phone">
                     <li>0917951318</li>
                     <li>0912466444</li>
                 </ul>
             </div>
-        </div>
+        </div> --}}
         <div class="floatl box">            
             <div class="menu-top-menu-container">
                 <ul class="menu">   

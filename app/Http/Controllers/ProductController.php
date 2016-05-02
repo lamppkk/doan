@@ -27,6 +27,9 @@ class ProductController extends Controller
 		$product->content = $request->txtNoiDung;
 		$product->price = $request->txtDongia;
 		//$product->qty = $request->txtSoluong;
+		if ($request->txtGiakm) {
+			$product->price_sale = $request->txtGiakm;
+		} 
 		$product->keywords = $request->txtTukhoa;
 		$product->description = $request->txtMota;
 		$product->status = $request->txtTrangthai;

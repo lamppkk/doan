@@ -23,53 +23,53 @@
 
 
 <div class="row">
-	<form method="POST" action="{!! route('admin.user.getList') !!}" class="form-horizontal">
-		<input type="hidden" value="{!! csrf_token() !!}" name="_token"/>
-		<div class="col-lg-4">
-			<h2>Thêm người dùng</h2>
-				<div class="form-group col-sm-12">
-					<label for="txtUser" class="control-label">Tên người dùng: </label>
-					<input type="text"  class="form-control" name="txtUser" id="txtUser" placeholder="" required> 
-				</div>
-				
-				<div class="form-group col-sm-12">
-					<label for="txtEmail" class="control-label">Email: </label>
-					<input type="email"  class="form-control" name="txtEmail" id="txtEmail" placeholder="" required> 
-				</div>
-				
-				<div class="form-group col-sm-12">
-					<label for="txtPass" class="control-label">Mật khẩu:</label>
-					<input type="password"  class="form-control" name="txtPass" id="txtPass" placeholder="" required> 
-				</div>
+    <form method="POST" action="{!! route('admin.user.getList') !!}" class="form-horizontal">
+        <input type="hidden" value="{!! csrf_token() !!}" name="_token"/>
+        <div class="col-lg-4">
+            <h2>Thêm người dùng</h2>
+                <div class="form-group col-sm-12">
+                    <label for="txtUser" class="control-label">Tên người dùng: </label>
+                    <input type="text"  class="form-control" name="txtUser" id="txtUser" placeholder="" required> 
+                </div>
+                
+                <div class="form-group col-sm-12">
+                    <label for="txtEmail" class="control-label">Email: </label>
+                    <input type="email"  class="form-control" name="txtEmail" id="txtEmail" placeholder="" required> 
+                </div>
+                
+                <div class="form-group col-sm-12">
+                    <label for="txtPass" class="control-label">Mật khẩu:</label>
+                    <input type="password"  class="form-control" name="txtPass" id="txtPass" placeholder="" required> 
+                </div>
 
-				 <div class="form-group col-sm-12">
-					<label for="txtRePass" class="control-label">Nhập lại mật khẩu:</label>
-					<input type="password" class="form-control" name="txtRePass" id="txtRePass" placeholder="" > 
-				</div>
+                 <div class="form-group col-sm-12">
+                    <label for="txtRePass" class="control-label">Nhập lại mật khẩu:</label>
+                    <input type="password" class="form-control" name="txtRePass" id="txtRePass" placeholder="" > 
+                </div>
 
-				<div class="form-group col-sm-12">
-					<label for="txtLevel" class="control-label">Quyền:</label>
-					<select class="form-control"  name="txtLevel" id="txtLevel">
-						<option value="0">Admin </option>
-						<option value="1">Nhân viên </option>
-					</select>
-				</div>
-				<div style="margin-top: 25px;"></div>
-				<div class="form-group col-sm-12">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Thêm mới</button>
-						<button type="reset" class="btn btn-warning"><i class="glyphicon glyphicon-repeat"></i> Hủy bỏ</button>
-					</div>
-				</div>
-		</div>
-	</form>
+                <div class="form-group col-sm-12">
+                    <label for="txtLevel" class="control-label">Quyền:</label>
+                    <select class="form-control"  name="txtLevel" id="txtLevel">
+                        <option value="0">Quản lý </option>
+                        <option value="1">Nhân viên </option>
+                    </select>
+                </div>
+                <div style="margin-top: 25px;"></div>
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Thêm mới</button>
+                        <button type="reset" class="btn btn-warning"><i class="glyphicon glyphicon-repeat"></i> Hủy bỏ</button>
+                    </div>
+                </div>
+        </div>
+    </form>
 
 
-	<form method="POST" action="{!! route('admin.user.postAction') !!}" class="form-horizontal">
-		<div class="table-responsive" style="margin-top: 45px;">
-			<input type="hidden" value="{!! csrf_token() !!}" name="_token"/>
-			<table class="table table-bordered table-hover table-striped" cellspacing="0" id="table">
-				<div class="col-lg-3">
+    <form method="POST" action="{!! route('admin.user.postAction') !!}" class="form-horizontal">
+        <div class="table-responsive" style="margin-top: 45px;">
+            <input type="hidden" value="{!! csrf_token() !!}" name="_token"/>
+            <table class="table table-bordered table-hover table-striped" cellspacing="0" id="table">
+                <div class="col-lg-3">
                     <select name="action" style="margin-left: -15px; width: 115px;" class="form-control input-sm">
                     <option> Chọn tác vụ</option>
                     <option value="delete">Xóa</option>
@@ -91,27 +91,40 @@
                     </tr>
                 </thead>
                 <tbody>
-					@foreach ($data as $user)
+                    @foreach ($data as $user)
                     <tr>
                         <td width="18">
                             <input type="checkbox" name="cbitem[]" value="{!!$user['id']!!}" class="checkbox" />
                         </td>
                         <td width="100">{!!$user['username']!!}</td>
                         <td width="100">{!!$user['email']!!}</td>
-                        <td width="70">{!!$user['level']!!}</td>
-                        <td width="70">{!!$user['status']!!}</td>
+
+                        <td width="70">
+                            @if ($user['level'] == 0) 
+                                Quản lý
+                            @else 
+                                Nhân viên
+                            @endif
+                        </td>
+                        <td width="70">
+                            @if ($user['status'] == 0) 
+                                Tạm khóa
+                            @else 
+                                Hoạt động
+                            @endif
+                        </td>
                         
                         <td width="130">
                             <a href="{!! URL::route('admin.user.getEdit', $user['id']) !!}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i> Sửa </a>
-							<a href="{!! URL::route('admin.user.getDelete', $user['id']) !!}" onclick="return confirm('Bạn có muốn xóa');" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Xóa</a>
+                            <a href="{!! URL::route('admin.user.getDelete', $user['id']) !!}" onclick="return confirm('Bạn có muốn xóa');" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Xóa</a>
                         </td>
                     </tr>
-					@endforeach
+                    @endforeach
                 </tbody>
             </table>
-			</div>
-		</div>
-	</form>
+            </div>
+        </div>
+    </form>
 </div>
 <!-- /.row -->
 @endsection()

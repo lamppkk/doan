@@ -8,7 +8,7 @@ class Products extends Model
 {
     protected $table = "products";
 
-    protected $filltable = ['cat_id', 'user_id', 'name', 'alias', 'images', 'content', 'price', 'keywords', 'description', 'status'];
+    protected $filltable = ['cat_id', 'user_id', 'name', 'alias', 'images', 'content', 'price', 'price_sale', 'keywords', 'description', 'status'];
 
     public $timestamps = true;
 

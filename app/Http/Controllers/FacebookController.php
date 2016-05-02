@@ -65,8 +65,10 @@ class FacebookController extends Controller
         $this->updateOption('livechat-bg', $request->txtBg);
         $this->updateOption('livechat-title', $request->txtTieuDe);
         $this->updateOption('livechat-lang', $request->txtLang);
-        $this->updateOption('livechat-status', $request->txtTrangthai);
-
+        if(($request->txtTrangthai) == '0') {
+            $status = 0;
+        } else $status = 1;
+        $this->updateOption('livechat-status', $status);
         return redirect()->back()
             ->with(['flash_message'=>'Sửa thành công', 'flash_level'=>'alert-info alert-dismissable']);
     }

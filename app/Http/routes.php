@@ -179,5 +179,20 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('livechat',['as'=>'admin.facebook.postLiveChat','uses'=>'FacebookController@postLiveChat']);  
         });
 
+        Route::get('gioithieu',['as'=>'admin.getGioithieu','uses'=>'ContentController@getGioithieu']);
+        Route::post('gioithieu',['as'=>'admin.postGioithieu','uses'=>'ContentController@postGioithieu']);
+
+        Route::get('dieukhoan',['as'=>'admin.getDieukhoan','uses'=>'ContentController@getDieukhoan']);
+        Route::post('dieukhoan',['as'=>'admin.postDieukhoan','uses'=>'ContentController@postDieukhoan']);
+        
+        Route::get('huongdan',['as'=>'admin.getHuongdan','uses'=>'ContentController@getHuongdan']);
+        Route::post('huongdan',['as'=>'admin.postHuongdan','uses'=>'ContentController@postHuongdan']);
+
+        Route::get('chinhsach',['as'=>'admin.getChinhsach','uses'=>'ContentController@getChinhsach']);
+        Route::post('chinhsach',['as'=>'admin.postChinhsach','uses'=>'ContentController@postChinhsach']);
+
+         Route::resource('member', 'MemberController');
+         Route::resource('contact', 'ContactController', ['only' => ['index', 'destroy']]);
+
     });
 });

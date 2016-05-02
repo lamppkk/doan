@@ -39,25 +39,25 @@
 				
 				<div class="form-group col-sm-12">
 					<label for="txtPass" class="control-label">Mật khẩu:</label>
-					<input type="password"  class="form-control" name="txtPass" id="txtPass" placeholder="" > 
+					<input type="password"  class="form-control" name="txtPass" id="txtPass" placeholder="Bỏ trống nếu không đổi" > 
 				</div>
 
 				 <div class="form-group col-sm-12">
 					<label for="txtRePass" class="control-label">Nhập lại mật khẩu:</label>
-					<input type="password" class="form-control" name="txtRePass" id="txtRePass" placeholder="" > 
+					<input type="password" class="form-control" name="txtRePass" id="txtRePass" placeholder="Bỏ trống nếu không đổi" > 
 				</div>
 
 				<div class="form-group col-sm-12">
 					<label for="txtLevel" class="control-label">Quyền:</label>
 					<select class="form-control"  name="txtLevel" id="txtLevel">
-						<option value="0">Admin </option>
+						<option value="0">Quản lý </option>
 						<option value="1">Nhân viên </option>
 					</select>
 				</div>
 				<div style="margin-top: 25px;"></div>
 				<div class="form-group col-sm-12">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Thêm mới</button>
+						<button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Cập nhật</button>
 						<button type="reset" class="btn btn-warning"><i class="glyphicon glyphicon-repeat"></i> Hủy bỏ</button>
 					</div>
 				</div>
@@ -98,8 +98,20 @@
                         </td>
                         <td width="100">{!!$user['username']!!}</td>
                         <td width="100">{!!$user['email']!!}</td>
-                        <td width="70">{!!$user['level']!!}</td>
-                        <td width="70">{!!$user['status']!!}</td>
+                        <td width="70">
+                        	@if ($user['level'] == 0) 
+                                Quản lý
+                            @else 
+                                Nhân viên
+                            @endif
+						</td>
+                        <td width="70">
+                            @if ($user['status'] == 0) 
+                                Tạm khóa
+                            @else 
+                                Hoạt động
+                            @endif
+                        </td>
                         
                         <td width="130">
                             <a href="{!! URL::route('admin.user.getEdit', $user['id']) !!}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i> Sửa </a>
