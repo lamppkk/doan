@@ -189,17 +189,13 @@
                             <li>
                                 <a href="{{ url('admin/facebook/notify') }}"><i class="fa fa-fw fa-plus"></i> Gửi thông báo</a>
                             </li>
-                           
-                            <li>
-                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-envelope"></i> Gửi tin nhắn</a>
-                            </li>
                             
                             <li>
                                 <a href="{{ url('admin/facebook/livechat') }}"><i class="fa fa-fw fa-commenting-o"></i> Live Chat</a>
                             </li>
 
                             <li>
-                                <a href="{{ url('#') }}"><i class="fa fa-fw fa-cog"></i> Cài đặt</a>
+                                <a href="{{ url('admin/facebook/setting') }}"><i class="fa fa-fw fa-cog"></i> Cài đặt</a>
                             </li>
 
                                 

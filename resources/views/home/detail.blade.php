@@ -81,14 +81,9 @@
                     </div>
                 </div>
                 <div class="info-to-buy">
-                    <div class="title">Chính sách mua hàng:</div>			
-					<div class="textwidget" style="font-size: 13px;">
-						<li>Giá bán đã bao gồm VAT</li>
-						<li>Bảo hành từ 12 tháng</li>
-						<li>Giao hàng toàn quốc</li>
-						<li>Nhận tiền sau khi giao hàng</li>
-						<li>Hỗ trợ 24/24 kể cả ngày nghỉ</li>
-						<li> Giảm giá 30% khi mua phụ kiện</li>
+                    <div class="title">Mô tả sản phẩm</div>			
+					<div class="textwidget" style="font-size: 14px;">
+						{!! strip_tags(str_limit($product->content, 600)) !!}
 					</div>
 		        </div>
             </div>
@@ -97,46 +92,16 @@
 				<div id="wrap-" class="support-online-1 box">
             	    <div class="content">
             		    <div class="box">  
-								<div class="title"><h3>Tư vấn mua hàng</h3></div>	
-									<table border="0">
-										<tbody><tr>
-											<td>Điện thoại:
-											</td>
-											<td class="row2"> <span class="phone-number"><span class="phone">0210.999.999</span></span>
-											</td>
-										</tr>
-										
-										<tr>
-											<td>Skype: 
-											</td>
-											<td><a class="skype" href="skype:bmc?chat">
-											<img src="http://binhminhcomputer.com/images/skype.png" alt="">
-											</a> 
-											</td>
-										</tr>
-									</tbody></table>
-									
-									<br><br><div class="clear"></div>
-									
-									<div class="title"><h3>Hỗ trợ thanh toán</h3></div>	
-									<table border="0">
-										<tbody><tr>
-											<td>Điện thoại:
-											</td>
-											<td class="row2"> <span class="phone-number"><span class="phone">0210.999.999</span></span>
-											</td>
-										</tr>
-										<tr>
-											<td>Skype: 
-											</td>
-											<td><a class="skype" href="skype:bmc?chat">
-											<img src="http://binhminhcomputer.com/images/skype.png" alt="">
-											</a> 
-											</td>
-										</tr>
-									</tbody></table>
+							<div class="title"><h3>Chính sách mua hàng</h3></div>
+							<ul>	
+								<li class="fa fa-life-ring"> Hỗ trợ 24/24 kể cả ngày nghỉ</li>
+								<li class="fa fa-refresh"> 14 ngày trả hàng miễn phí</li></li>
+								<li class="fa fa-usd">  Gía bán đã bao gồm VAT</li>
+								<li class="fa fa-truck"> Giao hàng toàn quốc</li>
+								<li class="fa fa-hand-paper-o" >Thanh toán sau khi giao hàng</li>
+							</ul>
 						</div>     
-								<div class="clear"></div>
+						<div class="clear"></div>
 								
 						</div>
 				</div>

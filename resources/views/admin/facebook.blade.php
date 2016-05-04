@@ -41,7 +41,6 @@
 	<ul class="nav nav-tabs" role="tablist">
 		<li role="presentation" class="active"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Gửi thông báo</a></li>
 		<li role="presentation"><a href="#list" aria-controls="profile" role="tab" data-toggle="tab">Lịch sử</a></li>
-		<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Cài đặt</a></li>
 	</ul>
 	<div style="padding: 10px;"></div>
 	<!-- Tab panes -->
@@ -51,19 +50,20 @@
 				{!!csrf_field()!!}
 				<div class="form-group">
 					<label for="txtTo" class="col-sm-2 control-label">Gửi đến</label>
-					<div class="col-sm-2">
+					<div class="col-sm-9">
 						<select name="txtTo" id="txtTo" class="form-control"> 
 							<option value="1">Tất cả Fb Id</option>
 						</select>
 					</div>
-					<div style="left: -92px; position: relative;">
-						<label for="txtLoaitru" class="col-sm-2 control-label">Loại trừ</label>
-						<div class="col-sm-6">
-							<input type="text" required class="form-control" id="txtLoaitru" name="txtLoaitru" placeholder="Facebook ID">
-						</div>
-
-					</div>
 				</div>
+				<div class="form-group">
+					<label for="txtLoaitru" class="col-sm-2 control-label">Loại trừ</label>
+					<div class="col-sm-9">
+						<textarea required class="form-control" id="txtLoaitru" name="txtLoaitru" placeholder="Facebook ID"></textarea>
+					</div>
+
+				</div>
+
 				<div class="form-group">
 					<label for="txtLink" class="col-sm-2 control-label">Liên kết</label>
 					<div class="col-sm-9">
@@ -148,125 +148,7 @@
 		</form>
 
 	</div>
-	<div role="tabpanel" class="tab-pane" id="settings">
-	<form method="POST" action="{{route('admin.facebook.postSetting')}}" class="form-horizontal">
-		{!!csrf_field()!!}
-		<div class="panel panel-default">
-			<!-- Default panel contents -->
-			<div class="panel-heading">Thông báo facebook</div>
-			<div class="panel-body">
-				<div class="checkbox" style="float: left;">
-					<label>
-						<input id="ckAll" name="ckAll" type="checkbox"> Vô hiệu hóa tất cả?
-					</label>
-				</div>
-			<div style="float: right;">
-				<button type="submit" id="btnSubmit" class="btn btn-primary"> Cập nhật</button>
-				<button type="reset" class="btn btn-default">Hủy bỏ</button>
-			</div>
-
-			</div>
-
-			<!-- List group -->
-			<ul class="list-group">
-				<li class="list-group-item">
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label>
-										<input checked name="fb_register" id="fb_register" type="checkbox"> Thông báo khi người dùng đăng ký ?
-									</label>
-								</div>
-							</div>
-							<div class="col-sm-7">
-								<input value="{!!getOption('fb_register')!!}" type="text" name="fb_register_val" id="fb_register_val" class="form-control" placeholder="Nhập nội dung thông báo, không quá 180 ký tự " />
-							</div>
-						</div>
-				</li>
-
-				<li class="list-group-item">
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label>
-										<input checked name="fb_order" id="fb_order" type="checkbox"> Thông báo khi người dùng đặt hàng ?
-									</label>
-								</div>
-							</div>
-							<div class="col-sm-7">
-								<input value="{!!getOption('fb_order')!!}" type="text" name="fb_order_val" id="fb_order_val" class="form-control" placeholder="Nhập nội dung thông báo, không quá 180 ký tự " />
-							</div>
-						</div>
-				</li>
-
-				<li class="list-group-item">
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label>
-										<input checked name="fb_checkout" id="fb_checkout" type="checkbox"> Thông báo khi người dùng thanh toán đơn hàng ?
-									</label>
-								</div>
-							</div>
-							<div class="col-sm-7">
-								<input value="{!!getOption('fb_checkout')!!}" type="text" name="fb_checkout_val" id="fb_checkout_val" class="form-control" placeholder="Nhập nội dung thông báo, không quá 180 ký tự " />
-							</div>
-						</div>
-				</li>
-
-				<li class="list-group-item">
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label>
-										<input checked name="fb_ship" id="fb_ship" type="checkbox"> Thông báo khi  đơn hàng được vận chuyển?
-									</label>
-								</div>
-							</div>
-							<div class="col-sm-7">
-								<input value="{!!getOption('fb_ship')!!}" type="text" name="fb_ship_val" id="fb_ship_val" class="form-control" placeholder="Nhập nội dung thông báo, không quá 180 ký tự " />
-							</div>
-						</div>
-				</li>
-				
-				<li class="list-group-item">
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label>
-										<input checked name="fb_done" id="fb_done" type="checkbox"> Thông báo khi  đơn hàng hoàn thành?
-									</label>
-								</div>
-							</div>
-							<div class="col-sm-7">
-								<input value="{!!getOption('fb_done')!!}" type="text" name="fb_done_val" id="fb_done_val" class="form-control" placeholder="Nhập nội dung thông báo, không quá 180 ký tự " />
-							</div>
-						</div>
-				</li>
-
-				<li class="list-group-item">
-						<div class="row">
-							<div class="col-sm-5">
-								<div class="checkbox">
-									<label>
-										<input checked name="fb_cancel" id="fb_cancel" type="checkbox"> Thông báo khi  đơn hàng bị hủy ?
-									</label>
-								</div>
-							</div>
-							<div class="col-sm-7">
-								<input value="{!!getOption('fb_cancel')!!}"  type="text" name="fb_cancel_val" id="fb_cancel_val" class="form-control" placeholder="Nhập nội dung thông báo, không quá 180 ký tự " />
-							</div>
-						</div>
-				</li>
-
-
-
-
-
-			</ul>
-		</div>
-	</form>
-	</div>
+	
 	</div>
 
 </div>

@@ -11,7 +11,8 @@ class MemberController extends Controller
 {
 	public function index()
     {
-    	# code...
+        $data = Members::all();
+    	return view('admin.member.list', compact('data'));
     }
 
     public function create()

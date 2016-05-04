@@ -87,7 +87,7 @@
                         <th width="100">Email</th>
                         <th width="70">Quyền</th>
                         <th width="70">Trạng thái</th>
-                        <th width="130">Thao tác</th>
+                        <th width="170">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,7 +114,7 @@
                             @endif
                         </td>
                         
-                        <td width="130">
+                        <td width="170">
                             <a href="{!! URL::route('admin.user.getEdit', $user['id']) !!}" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i> Sửa </a>
                             <a href="{!! URL::route('admin.user.getDelete', $user['id']) !!}" onclick="return confirm('Bạn có muốn xóa');" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Xóa</a>
                         </td>

@@ -63,7 +63,7 @@
 					<tr>
 						<td>Hình thức thanh toán: </td>
 						<td class="center">
-							<input type="radio"  name="thanhtoan" id="tructiep"> <label for="tructiep" class="pointer">Trực tiếp khi nhận hàng</label>
+							<input type="radio" checked name="thanhtoan" id="tructiep"> <label for="tructiep" class="pointer">Trực tiếp khi nhận hàng</label>
 							<input type="radio"  name="thanhtoan" id="online"> <label for="online" class="pointer">Thanh toán online</label>
 						
 						</td>

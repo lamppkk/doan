@@ -42,6 +42,14 @@ class FacebookController extends Controller
         $option = Options::where('name', $name)->update(['value' => $value]);
     }
 
+    public function getSetting()
+    {
+        return view('admin.fbsetting');
+        
+    }
+
+
+
     public function postSetting(Request $request)
     {
         $this->updateOption('fb_register', $request->fb_register_val);
@@ -53,6 +61,9 @@ class FacebookController extends Controller
         return redirect()->back()
             ->with(['flash_message'=>'Sửa thành công', 'flash_level'=>'alert-info alert-dismissable']);
     }
+
+
+
 
     public function getLiveChat()
     {

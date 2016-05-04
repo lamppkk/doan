@@ -173,6 +173,8 @@ Route::group(['middleware' => 'web'], function () {
         Route::group(['prefix'=>'facebook'], function () {
             Route::get('notify',['as'=>'admin.facebook.getNotify','uses'=>'FacebookController@getNotify']); 
             Route::post('notify',['as'=>'admin.facebook.postNotify','uses'=>'FacebookController@postNotify']);  
+
+            Route::get('setting',['as'=>'admin.facebook.getSetting','uses'=>'FacebookController@getSetting']); 
             Route::post('setting',['as'=>'admin.facebook.postSetting','uses'=>'FacebookController@postSetting']);   
             
             Route::get('livechat',['as'=>'admin.facebook.getLiveChat','uses'=>'FacebookController@getLiveChat']); 

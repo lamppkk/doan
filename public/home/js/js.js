@@ -5,8 +5,13 @@ valid.r={
 	'numbers':/[^\d]/g
 }
 
-$(document).ready(function() {
-	
+$(document).ready(function() Ơ
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-Token': $('meta[name="_token"]').attr('content')
+        }
+    });
+    
     var href = "/viewCart/";
 	
     //Fixed on scroll

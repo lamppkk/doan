@@ -358,13 +358,17 @@ class HomeController extends Controller
 			if(isset($member->birthday)){ 
 				$birthday = date( 'Y-m-d', strtotime($member->birthday));
 			} else $birthday = '';
+
+			if(isset($member->gender)){ 
+				$gender = $member->gender;
+			} else $gender = '';
 			
 			$id = DB::table('members')->insertGetId([
 					'name' => $member->name,
 					'facebook_id' => $member->id,
 					'email' => $email,
 					'birthday' =>  $birthday, 
-					'gender' => $member->gender,
+					'gender' => $gender,
 					'status' => 1,
 				]
 			);

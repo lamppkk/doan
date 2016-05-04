@@ -106,7 +106,7 @@
 			</div>
 
 			<div class="form-group col-sm-3" >
-				<label for="txtGiakm">Giá khuyến mại: <span class="required">*</span></label>
+				<label for="txtGiakm">Giá khuyến mại: </label>
 				<input type="number"  value="{!! old('txtGiakm') !!}" class="form-control" name="txtGiakm" id="txtGiakm" placeholder="" required>
 			</div>
 		</div>
