@@ -91,14 +91,13 @@
             <div class="col2 floatr">
 				<div id="wrap-" class="support-online-1 box">
             	    <div class="content">
-            		    <div class="box">  
+            		    <div class="box" style="font-size: 15px;">  
 							<div class="title"><h3>Chính sách mua hàng</h3></div>
 							<ul>	
-								<li class="fa fa-life-ring"> Hỗ trợ 24/24 kể cả ngày nghỉ</li>
+								<li class="fa fa-life-ring"> Hỗ trợ khách hàng 24/24 </li>
 								<li class="fa fa-refresh"> 14 ngày trả hàng miễn phí</li></li>
-								<li class="fa fa-usd">  Gía bán đã bao gồm VAT</li>
-								<li class="fa fa-truck"> Giao hàng toàn quốc</li>
-								<li class="fa fa-hand-paper-o" >Thanh toán sau khi giao hàng</li>
+								<li class="fa fa-truck"> Giao hàng trên toàn quốc</li>
+								<li class="fa fa-hand-paper-o"> Giá bán đã bao gồm VAT </li>
 							</ul>
 						</div>     
 						<div class="clear"></div>

@@ -5,7 +5,7 @@ valid.r={
 	'numbers':/[^\d]/g
 }
 
-$(document).ready(function() Ơ
+$(document).ready(function() {
     $.ajaxSetup({
         headers: {
             'X-CSRF-Token': $('meta[name="_token"]').attr('content')
@@ -15,18 +15,18 @@ $(document).ready(function() Ơ
     var href = "/viewCart/";
 	
     //Fixed on scroll
-    if($("#relative").size()!=0)
-    {
-        var y = $("#relative").offset().top;
-        $(window).scroll(function(){
-            var x = y - $(window).scrollTop();
-            if( x<0 ) {$("#relative").addClass("fixed")}
-            else $("#relative").removeClass("fixed");
-            if( $(window).scrollTop() + $(window).height() >= 2070) {
-                $("#relative").removeClass("fixed");
-            }
-        });
-    }
+    // if($("#relative").size()!=0)
+    // {
+    //     var y = $("#relative").offset().top;
+    //     $(window).scroll(function(){
+    //         var x = y - $(window).scrollTop();
+    //         if( x<0 ) {$("#relative").addClass("fixed")}
+    //         else $("#relative").removeClass("fixed");
+    //         if( $(window).scrollTop() + $(window).height() >= 2070) {
+    //             $("#relative").removeClass("fixed");
+    //         }
+    //     });
+    // }
     
 
 
