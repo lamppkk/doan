@@ -221,10 +221,6 @@
                             <li>
                                 <a href="{{ url('admin/ads/1') }}"> Quảng cáo & Slide </a>
                             </li>
-
-                            <li>
-                                <a href="{{ url('') }}">Thanh toán</a>
-                            </li>
                            
                         </ul>
                     </li>
