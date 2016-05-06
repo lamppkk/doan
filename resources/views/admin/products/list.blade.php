@@ -56,7 +56,7 @@
                         <th width="90">Đơn giá</th>
                         <th width="150">Mô tả</th>
                         <th width="50">Trạng thái</th>
-                        <th width="100">Thao tác</th>
+                        <th width="60">Thao tác</th>
                     </tr>
                 </thead>
 
@@ -74,12 +74,12 @@
 							
 							
 							<td>@if($item['status'] == 1) Hiển thị @else Ẩn @endif</td>
-							<td width="150">
+							<td width="60">
 								<a href="{!! URL::route('admin.products.getEdit', $item['id']) !!}" class="btn btn-warning">
-									<i class="glyphicon glyphicon-pencil"></i> Sửa 
+									<i class="glyphicon glyphicon-pencil"></i> 
 								</a>
 								<a href="{!! URL::route('admin.products.getDelete', $item['id']) !!}" onclick="return confirm('Bạn có muốn xóa');" type="button" class="btn btn-danger">
-									<i class="glyphicon glyphicon-remove"></i> Xóa
+									<i class="glyphicon glyphicon-remove"></i>
 								</a>
 							</td>
 						</tr>
