@@ -59,7 +59,7 @@
             <div class="menu-top-menu-container">
                 <ul class="menu">   
                     @if(Auth::guard('member')->check())
-                    <li><a href="{!!url('')!!}/member.html" title="">Xin chào, {!! getMember(Auth::guard('member')->user()->id)->name !!}  </a></li>
+                    <li><a href="#" title="">Xin chào, {!! getMember(Auth::guard('member')->user()->id)->name !!}  </a></li>
                     <li><a href="{!!url('')!!}/logout.html" title="">Thoát</a></li>
                                         
                     @else

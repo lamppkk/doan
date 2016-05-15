@@ -41,7 +41,7 @@
 				}
 				//disabled style="background: "
 			</script>
-			<?php echo $authMember = Auth::guard('member')->check(); ?>
+			<?php //echo $authMember = Auth::guard('member')->check(); ?>
 			<p><input type="email" name="txtEmail" placeholder="Email"></p>
 			<p><input onchange="checkRadio()" type="radio" checked name="check" value="1" id="radio1"><label for="radio1" class="pointer"> Vâng, Mật khẩu của tôi là:</label></p>
 			<p><input onchange="checkRadio()"  type="radio" name="check" id="radio2" value="0"><label for="radio2" class="pointer"> Không, Tôi chưa có tài khoản!</label></p>

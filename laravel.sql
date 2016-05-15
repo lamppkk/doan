@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2016 at 01:39 AM
+-- Generation Time: May 15, 2016 at 01:28 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -90,7 +90,11 @@ CREATE TABLE `fb_logs` (
 
 INSERT INTO `fb_logs` (`id`, `from`, `to`, `link`, `image`, `content`, `created_at`, `updated_at`) VALUES
 (1, 'midi9x', 'Tất cả facebook id', '/', ' ', 'test', '2016-04-01 19:13:55', '2016-04-01 19:13:55'),
-(2, 'midi9x', 'Tất cả facebook id', '/', ' ', 'Fuck', '2016-04-28 00:52:31', '2016-04-28 00:52:31');
+(2, 'midi9x', 'Tất cả facebook id', '/', ' ', 'Fuck', '2016-04-28 00:52:31', '2016-04-28 00:52:31'),
+(3, 'midi9x', 'Tất cả facebook id', 'http://timemart.dev/giay-cao-co-sanvado_1.html', ' ', 'GIÀY CAO CỔ NAM SANVADO Khuyến mại 101% :v', '2016-05-05 06:51:50', '2016-05-05 06:51:50'),
+(4, 'midi9x', 'Tất cả facebook id', 'http://timemart.dev/giay-cao-co-da-lon-mau-den_10.html', ' ', 'Giày cao cổ da lộn giảm giá đến 101%', '2016-05-06 01:37:58', '2016-05-06 01:37:58'),
+(5, 'midi9x', 'Tất cả facebook id', 'http://timemart.dev/giay-kihita-da-tron-mau-nau_8.html', ' ', 'GIÀY KIHITA DA TRƠN giam gia 99%', '2016-05-06 20:06:31', '2016-05-06 20:06:31'),
+(6, 'midi9x', 'Tất cả facebook id', 'http://timemart.dev/giay-kihita-da-tron-mau-nau_8.html', ' ', 'GIÀY KIHITA DA TRƠN giam gia 30%', '2016-05-06 20:48:38', '2016-05-06 20:48:38');
 
 -- --------------------------------------------------------
 
@@ -120,7 +124,7 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`id`, `name`, `email`, `password`, `facebook_id`, `phone`, `address`, `birthday`, `gender`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'Nguyen Anh', 'dsl@gmail.com', '', '1778461952373723', 3333333, '0', '0000-00-00', 'female', 1, NULL, NULL, NULL),
-(3, 'Nguyễn Minh Định', 'midi9x@gmail.com', '', '574245586067376', 1682485646, 'Soc Dang - Doan Hung - Phu Tho', '0000-00-00', 'male', 1, 'bOfkIp92wKIZZ4hcz9tUOc3Hwj64CxvxXupv9KQU3yM8DsRHSt2oE87YWXIs', NULL, NULL),
+(3, 'Nguyễn Minh Định', 'midi9x@gmail.com', '', '574245586067376', 1682485646, 'Soc Dang - Doan Hung - Phu Tho', '0000-00-00', 'male', 1, 'FP6NA7KwWIhW2h4jA2LYWWEHIZ1ps4y4LvHbdZl0zzbkefqNvJYGg56SlzTw', NULL, NULL),
 (4, 'Thế Sơn', 'zika190994@gmail.com', '', '608615212637998', 1212121212, 'Ha noi', '0000-00-00', 'male', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -289,7 +293,8 @@ INSERT INTO `orders` (`id`, `member_id`, `user_id`, `name`, `address`, `phone`, 
 (6, 3, NULL, 'Nguyễn Minh Định', 'Soc Dang - Doan Hung - Phu Tho', 1682485646, 'midi9x@gmail.com', '2016-04-28', 'xfsfs', 0, '2016-04-28 00:50:47', '2016-04-28 00:50:47'),
 (7, 4, NULL, 'Thế Sơn', 'Ha noi', 1212121212, 'zika190994@gmail.com', '2016-04-28', '', 1, '2016-04-28 00:51:49', '2016-05-01 04:59:54'),
 (8, 3, NULL, 'Nguyễn Minh Định', 'Soc Dang - Doan Hung - Phu Tho', 1682485646, 'midi9x@gmail.com', '2016-04-29', '', 0, '2016-04-29 02:37:24', '2016-04-29 02:37:24'),
-(9, 3, NULL, 'Nguyễn Minh Định', 'Soc Dang - Doan Hung - Phu Tho', 1682485646, 'midi9x@gmail.com', '2016-05-02', '', 0, '2016-05-02 05:58:59', '2016-05-02 05:58:59');
+(9, 3, NULL, 'Nguyễn Minh Định', 'Soc Dang - Doan Hung - Phu Tho', 1682485646, 'midi9x@gmail.com', '2016-05-02', '', 0, '2016-05-02 05:58:59', '2016-05-02 05:58:59'),
+(10, 3, NULL, 'Nguyễn Minh Định', 'Soc Dang - Doan Hung - Phu Tho', 1682485646, 'midi9x@gmail.com', '2016-05-07', '', 1, '2016-05-06 20:46:51', '2016-05-06 20:47:37');
 
 -- --------------------------------------------------------
 
@@ -321,7 +326,9 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `qty`, `price`, `cr
 (10, 9, 9, 1, 1200000, '2016-05-02 05:58:59', '2016-05-02 05:58:59'),
 (11, 9, 10, 1, 799000, '2016-05-02 05:58:59', '2016-05-02 05:58:59'),
 (12, 9, 2, 1, 800000, '2016-05-02 05:58:59', '2016-05-02 05:58:59'),
-(13, 9, 8, 1, 1200000, '2016-05-02 05:58:59', '2016-05-02 05:58:59');
+(13, 9, 8, 1, 1200000, '2016-05-02 05:58:59', '2016-05-02 05:58:59'),
+(14, 10, 8, 1, 1200000, '2016-05-06 20:46:51', '2016-05-06 20:46:51'),
+(15, 10, 3, 1, 1199000, '2016-05-06 20:46:51', '2016-05-06 20:46:51');
 
 -- --------------------------------------------------------
 
@@ -372,7 +379,7 @@ INSERT INTO `products` (`id`, `cat_id`, `user_id`, `name`, `alias`, `images`, `c
 (7, 3, 1, 'Giày lười Sanvado da trơn', 'giay-luoi-sanvado-da-tron', 'http://timemart.dev/upload/images/giay-luoi-sanvado-da-tron/giay-luoi-sanvado-da-tron.png', '<p dir="ltr">Điểm nổi bật:&nbsp;Gi&agrave;y lười c&ocirc;ng sở Sanvado da trơn m&agrave;u đen (AP-080) 2016 quyến rũ với gam m&agrave;u đen sang trọng, thiết kế văn ph&ograve;ng lịch l&atilde;m, qu&yacute; ph&aacute;i, kiểu d&aacute;ng kh&ocirc;ng d&acirc;y thoải m&aacute;i, tiện lợi khi sử dụng. Được l&agrave;m tr&ecirc;n chất liệu da b&ograve; nguy&ecirc;n chất da xịn 100%, đế cao su đ&uacute;c bền, họa tiết đ&iacute;nh đ&aacute; trắng nhẹ nh&agrave;ng c&ugrave;ng d&acirc;y đan song song ở mũ c&agrave;ng l&agrave;m cho AP-080 trở n&ecirc;n nổi bật ở bất kỳ đ&acirc;u.</p>\r\n\r\n<p dir="ltr"><img alt="" src="http://timemart.dev/upload/images/giay-luoi-sanvado-da-tron/giay-luoi-sanvado-da-tron.png" style="height:397px; width:606px" /></p>\r\n\r\n<p dir="ltr">Điểm kh&aacute;c biệt:&nbsp;Đế cao su đ&uacute;c bền c&agrave;ng l&agrave;m cho đ&ocirc;i gi&agrave;y lười c&ocirc;ng sở AP-080 trở n&ecirc;n nổi bật ở bất kỳ đ&acirc;u. Chất liệu cao su chắc chắn, đầm ch&acirc;n khi sải bước. Họa tiết đường kẻ ngang c&aacute;ch điệu, song song tăng độ b&aacute;m d&iacute;nh ở những nơi đường trơn. Biểu tượng logo thương hiệu Sanvado tr&ecirc;n miếng l&oacute;t sang trọng.</p>\r\n\r\n<p dir="ltr">L&oacute;t gi&agrave;y mềm mịn, tho&aacute;ng kh&iacute; tốt, đặc biệt với khả năng chống thấm ho&agrave;n hảo sẽ tạo n&ecirc;n sự thoải m&aacute;i nhất cho c&aacute;c qu&yacute; &ocirc;ng khi sử dụng. Đường viền gồm nhiều chi tiết &ocirc; tr&ograve;n nhỏ chạy bao quanh l&oacute;t gi&agrave;y tăng thời trang, bền đẹp cao. &nbsp;</p>\r\n\r\n<p dir="ltr"><img alt="" src="http://timemart.dev/upload/images/giay-luoi-sanvado-da-tron/giay-luoi-sanvado-da-tron-4.png" style="height:358px; width:538px" /></p>\r\n\r\n<p dir="ltr">AP-080 kh&ocirc;ng cầu kỳ, kh&ocirc;ng kiểu c&aacute;ch nhưng vẫn nổi bật, vẫn sang trọng - đ&oacute; ch&iacute;nh l&agrave; đẳng cấp của một đ&ocirc;i gi&agrave;y tốt.</p>\r\n\r\n<p dir="ltr">Mix đồ:&nbsp;C&oacute; thể kết hợp với sơ mi, quần t&acirc;y/&acirc;u, vest..Tất cả đều mang đến cho bạn sự sang trọng, lịch l&atilde;m v&agrave; nổi bật.</p>\r\n', 699000, NULL, 'Giày lười, Giày công sở, Giày Sanvado, Giày da trơn', 'Giày lười công sở Sanvado da trơn màu đen (AP-080) 2016 quyến rũ với gam màu đen sang trọng, thiết kế văn phòng lịch lãm, quý phái, kiểu dáng không dây thoải mái, tiện lợi khi sử dụng.', 1, '2016-04-29 18:31:10', '2016-04-29 18:31:10'),
 (8, 8, 1, 'Giày KIHITA da trơn', 'giay-kihita-da-tron-mau-nau', 'http://timemart.dev/upload/images/giay-kihita-da-tron-mau-nau/giay-kihita-da-tron-mau-nau-1.png', '<p dir="ltr">Điểm nổi bật:&nbsp;HL-001c&oacute; vẻ ngo&agrave;i kh&aacute; hầm hố v&agrave; bụi bặm. N&oacute; th&iacute;ch hợp với những anh ch&agrave;ng c&aacute; t&iacute;nh mạnh mẽ, ưa thử th&aacute;ch hơn l&agrave; những ch&agrave;ng c&oacute; t&iacute;nh c&aacute;ch trầm, nhẹ nh&agrave;ng. Nhưng chẳng c&oacute; vấn đề g&igrave; nếu bạn muốn thử sức với HL-001 để th&ecirc;m ch&uacute;t th&uacute; vị cho phong c&aacute;ch của m&igrave;nh.</p>\r\n\r\n<p dir="ltr"><img alt="" src="http://timemart.dev/upload/images/giay-kihita-da-tron-mau-nau/giay-kihita-da-tron-mau-nau-1.png" style="height:358px; width:538px" /></p>\r\n\r\n<p dir="ltr">Điểm kh&aacute;c biệt:&nbsp;Bạn c&oacute; thể thấy da gi&agrave;y được l&agrave;m rất c&ocirc;ng phu xứng tầm với chất lượng của n&oacute;. Mặt da mềm v&agrave; mịn kh&ocirc;ng th&ocirc; cứng v&agrave; hay đứt g&atilde;y giống như những loại gi&agrave;y thường b&agrave;y b&aacute;n la liệt tr&ecirc;n thị trường.</p>\r\n\r\n<p dir="ltr">Gi&agrave;y c&ocirc;ng sở HL-001 gọn ghẽ, kh&ocirc;ng rườm r&agrave;, chất liệu da b&ograve; 100% mền mịn nhẹ nh&agrave;ng &ecirc;m ch&acirc;n. Tr&ecirc;n mặt gi&agrave;y được thiết kế tinh tế, đẹp mắt tạo điểm nhấn nh&aacute; khiến đ&ocirc;i gi&agrave;y trở l&ecirc;n s&agrave;nh điệu hơn. M&agrave;u n&acirc;u s&agrave;nh điệu v&agrave; kh&ocirc;ng bao giờ lỗi mốt.</p>\r\n\r\n<p dir="ltr"><img alt="" src="http://timemart.dev/upload/images/giay-kihita-da-tron-mau-nau/giay-kihita-da-tron-mau-nau-3.png" style="height:358px; width:538px" /></p>\r\n\r\n<p dir="ltr">Mix đồ:&nbsp;Bạn sẽ ngầu v&agrave; s&agrave;nh điệu hơn trong m&ugrave;a thu đ&ocirc;ng n&agrave;y khi kết hợp HL-001 với quần jean, kaki b&oacute; k&egrave;m theo &aacute;o da trơn, &aacute;o măng t&ocirc; hay &aacute;o b&ograve; b&ecirc;n ngo&agrave;i. Tất cả sẽ tạo n&ecirc;n cho bạn một phong c&aacute;ch c&aacute; t&iacute;nh, hiện đại v&agrave; s&agrave;nh điệu.</p>\r\n', 1200000, NULL, 'Giày cao cổ,Giày công sở,Giày KIHITA, Giày cao cấp', 'Giày cao cổ công sở KIHITA da trơn màu nâu (HL-001) thích hợp với những anh chàng cá tính mạnh mẽ, ưa thử thách hơn là những chàng có tính cách trầm, nhẹ nhàng', 1, '2016-04-29 18:39:57', '2016-04-29 18:39:57'),
 (9, 8, 1, 'Giày Valentine đục lỗ', 'giay-valentine-duc-lo-vien-hoa', 'http://timemart.dev/upload/images/giay-valentine-duc-lo-vien-hoa/giay-valentine-duc-lo-vien-hoa-2.png', '<p dir="ltr">Với sự ph&aacute;t triển của thời trang, ng&agrave;y nay, thật tiện lợi khi c&aacute;c mẫu gi&agrave;y lười ng&agrave;y c&agrave;ng được thiết kế một c&aacute;ch sang trọng hơn, lịch sự hơn, v&agrave; vẫn đảm bảo được đặc điểm gi&uacute;p người sử dụng tiết kiệm thời gian khi đi gi&agrave;y.</p>\r\n\r\n<p dir="ltr"><img alt="" src="http://timemart.dev/upload/images/giay-valentine-duc-lo-vien-hoa/giay-valentine-duc-lo-vien-hoa-1.png" style="height:538px; width:538px" /></p>\r\n\r\n<p dir="ltr">Gi&agrave;y lười được sử dụng trong m&ocirc;i trường c&ocirc;ng sở cũng như nhiều sự kiện bởi nhiều người, kể cả những doanh nh&acirc;n gi&agrave;u c&oacute; v&agrave; những người c&oacute; quan niệm khắt khe về thời trang. Người ta ch&uacute; &yacute; nhiều hơn đến c&aacute;ch thiết kế, chất liệu gi&agrave;y cũng cũng c&aacute;c chi tiết trang tr&iacute; v&agrave; c&aacute;c điểm nhấn tr&ecirc;n gi&agrave;y, tạo n&ecirc;n cảm gi&aacute;c thời thượng v&agrave; sang trọng cho người sử dụng.</p>\r\n\r\n<p dir="ltr"><img alt="" src="http://timemart.dev/upload/images/giay-valentine-duc-lo-vien-hoa/giay-valentine-duc-lo-vien-hoa-3.png" style="height:533px; width:800px" /></p>\r\n\r\n<p dir="ltr">Với mẫu gi&agrave;y lười nam Valentine đục lỗ viền hoa m&agrave;u n&acirc;u (HM-839), từng chi tiết nhỏ đều được người gia c&ocirc;ng ch&uacute; trọng kh&acirc;u may một c&aacute;ch tỉ mỉ, kĩ c&agrave;ng. Đảm bảo cho đ&ocirc;i gi&agrave;y sự bền đẹp v&agrave; lu&ocirc;n mang lại cảm gi&aacute;c thoải m&aacute;i cho người sử dụng.</p>\r\n', 1200000, NULL, 'Giày lười , giay cao cao, Giày Valentine ', 'Giày lười được sử dụng trong môi trường công sở cũng như nhiều sự kiện bởi nhiều người, kể cả những doanh nhân giàu có và những người có quan niệm khắt khe về thời trang', 1, '2016-04-29 18:44:21', '2016-04-29 18:44:21'),
-(10, 6, 1, 'Giày cao cổ da lộn màu đen', 'giay-cao-co-da-lon-mau-den', 'http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-1.png', '<p>Cập nhật xu hướng gi&agrave;y mới đang được c&aacute;c ch&agrave;ng trai y&ecirc;u th&iacute;ch&nbsp;Giaytot.com&nbsp;giới thiệu&nbsp;đến ph&aacute;i mạnh kiểu gi&agrave;y cao cổ da lộn c&aacute; t&iacute;nh, phong c&aacute;ch.&nbsp;Với m&agrave;u đen cuốn h&uacute;t, nam t&iacute;nh giản dị m&agrave; kh&ocirc;ng l&agrave;m mất đi vẻ trẻ trung, hiện đại</p>\r\n\r\n<p><img alt="" src="http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-1.png" style="height:538px; width:538px" /></p>\r\n\r\n<p>Gi&agrave;y da lộn ph&ugrave; hợp với hầu hết dịp sử dụng như đi l&agrave;m, đi chơi, đi tiệc hay kết hợp với c&aacute;c kiểu trang phục kh&aacute;c như quần jean, &aacute;o thun, quần &acirc;u, sơ mi, đồ vest.</p>\r\n\r\n<p><img alt="" src="http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-3.png" style="height:533px; width:800px" /></p>\r\n', 799000, NULL, 'Giày cao cổ, Giày da lộn', 'Giày da lộn phù hợp với hầu hết dịp sử dụng như đi làm, đi chơi, đi tiệc hay kết hợp với các kiểu trang phục khác như quần jean, áo thun, quần âu, sơ mi, đồ vest.', 1, '2016-04-29 18:51:42', '2016-04-29 18:51:42');
+(10, 6, 1, 'Giày cao cổ da lộn màu đen', 'giay-cao-co-da-lon-mau-den', 'http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-1.png', '<p>Cập nhật xu hướng gi&agrave;y mới đang được c&aacute;c ch&agrave;ng trai y&ecirc;u th&iacute;ch&nbsp;Giaytot.com&nbsp;giới thiệu&nbsp;đến ph&aacute;i mạnh kiểu gi&agrave;y cao cổ da lộn c&aacute; t&iacute;nh, phong c&aacute;ch.&nbsp;Với m&agrave;u đen cuốn h&uacute;t, nam t&iacute;nh giản dị m&agrave; kh&ocirc;ng l&agrave;m mất đi vẻ trẻ trung, hiện đại</p>\r\n\r\n<p><img alt="" src="http://timemart.dev/upload/images/giay-da-cao-mau-den/giay-da-cao-mau-den-1.png" style="height:538px; width:538px" /></p>\r\n\r\n<p>Gi&agrave;y da lộn ph&ugrave; hợp với hầu hết dịp sử dụng như đi l&agrave;m, đi chơi, đi tiệc hay kết hợp với c&aacute;c kiểu trang phục kh&aacute;c như quần jean, &aacute;o thun, quần &acirc;u, sơ mi, đồ vest.</p>\r\n\r\n<p><img alt="" src="http://timemart.dev/upload/images/giay-da-cao-mau-den/giay-da-cao-mau-den-3.png" style="height:533px; width:800px" /></p>\r\n', 799000, NULL, 'Giày cao cổ, Giày da lộn', 'Giày da lộn phù hợp với hầu hết dịp sử dụng như đi làm, đi chơi, đi tiệc hay kết hợp với các kiểu trang phục khác như quần jean, áo thun, quần âu, sơ mi, đồ vest.', 1, '2016-04-29 18:51:42', '2016-04-29 18:51:42');
 
 -- --------------------------------------------------------
 
@@ -400,7 +407,6 @@ INSERT INTO `product_images` (`id`, `image`, `product_id`, `created_at`, `update
 (5, 'http://laravel.dev/upload/images/giay-cao-co-sanvado-5.jpg', 1, '2016-04-02 18:47:41', '2016-04-02 18:47:41'),
 (6, 'http://laravel.dev/upload/images/giay-cao-co-sanvado.png', 1, '2016-04-02 18:47:41', '2016-04-02 18:47:41'),
 (7, 'http://laravel.dev/upload/images/giay-cong-so-buoc-day/giay-cong-so-buoc-day-2.png', 2, '2016-04-02 19:32:32', '2016-04-02 19:32:32'),
-(8, 'http://laravel.dev/upload/images/giay-cong-so-buoc-day/giay-cong-so-buoc-day-0.png', 2, '2016-04-02 19:32:32', '2016-04-02 19:32:32'),
 (9, 'http://laravel.dev/upload/images/giay-cong-so-buoc-day/giay-cong-so-buoc-day-3.png', 2, '2016-04-02 19:32:32', '2016-04-02 19:32:32'),
 (10, 'http://laravel.dev/upload/images/giay-cong-so-buoc-day/giay-cong-so-buoc-day-4.png', 2, '2016-04-02 19:32:32', '2016-04-02 19:32:32'),
 (11, 'http://laravel.dev/upload/images/giay-cong-so-buoc-day/giay-cong-so-buoc-day-5.png', 2, '2016-04-02 19:32:32', '2016-04-02 19:32:32'),
@@ -436,10 +442,10 @@ INSERT INTO `product_images` (`id`, `image`, `product_id`, `created_at`, `update
 (41, 'http://timemart.dev/upload/images/giay-valentine-duc-lo-vien-hoa/giay-valentine-duc-lo-vien-hoa-2.png', 9, '2016-04-29 18:44:21', '2016-04-29 18:44:21'),
 (42, 'http://timemart.dev/upload/images/giay-valentine-duc-lo-vien-hoa/giay-valentine-duc-lo-vien-hoa-3.png', 9, '2016-04-29 18:44:21', '2016-04-29 18:44:21'),
 (43, 'http://timemart.dev/upload/images/giay-valentine-duc-lo-vien-hoa/giay-valentine-duc-lo-vien-hoa-4.png', 9, '2016-04-29 18:44:21', '2016-04-29 18:44:21'),
-(44, 'http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-2.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42'),
-(45, 'http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-3.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42'),
-(46, 'http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-4.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42'),
-(47, 'http://timemart.dev/upload/images/giay-cao-co-da-lon-mau-den/giay-cao-co-da-lon-mau-den-1.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42');
+(44, 'http://timemart.dev/upload/images/giay-da-cao-mau-den/giay-da-cao-mau-den-2.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42'),
+(45, 'http://timemart.dev/upload/images/giay-da-cao-mau-den/giay-da-cao-mau-den-3.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42'),
+(46, 'http://timemart.dev/upload/images/giay-da-cao-mau-den/giay-da-cao-mau-den-4.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42'),
+(47, 'http://timemart.dev/upload/images/giay-da-cao-mau-den/giay-da-cao-mau-den-1.png', 10, '2016-04-29 18:51:42', '2016-04-29 18:51:42');
 
 -- --------------------------------------------------------
 
@@ -650,7 +656,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `fb_logs`
 --
 ALTER TABLE `fb_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `members`
 --
@@ -670,12 +676,12 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `products`
 --

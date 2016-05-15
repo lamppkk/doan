@@ -56,13 +56,13 @@
 						</select>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="txtLoaitru" class="col-sm-2 control-label">Loại trừ</label>
 					<div class="col-sm-9">
 						<textarea required class="form-control" id="txtLoaitru" name="txtLoaitru" placeholder="Facebook ID"></textarea>
 					</div>
 
-				</div>
+				</div> -->
 
 				<div class="form-group">
 					<label for="txtLink" class="col-sm-2 control-label">Liên kết</label>
